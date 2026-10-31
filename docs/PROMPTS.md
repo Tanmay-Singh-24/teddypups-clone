@@ -39,6 +39,18 @@ The next phase prompt to paste is **P2**.
 
 ---
 
+## #4 Handover check: Sun 1 Nov 2026, ~02:55 IST, fresh session (Claude Code, Opus)
+
+> check handover.md
+
+**Output:** the handover matched the repo (clean `main`, live site up, lint, typecheck and content:verify green). Flagged that the P4 prompt and PLAN.md §6.2 still asked for `dynamicParams = false`, which the handover says fails the build.
+
+> Yes, fix it
+
+**Output:** reworded the P4 prompt below and PLAN.md §6.2: keep `generateStaticParams`, don't export `dynamicParams`, call `notFound()` and return a real 404.
+
+---
+
 ## Phase prompts (paste one per fresh session)
 
 ### P0: scaffold and skeleton deploy · done in #2 + #3
@@ -102,7 +114,7 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§5 and §9 P3). Build the 8 
 ```text
 Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§6.1–6.3, §7 and §9 P4). First click every filter chip on the live /puppies page and note the exact URL parameter names, values, count texts and the empty state (open /puppies?origin=local). Then build:
 - /puppies: sketchbook header, filter panel synced to the URL, count line, sketch cards with Motion layout animation, the gone-home strip.
-- /puppies/[slug] for all 42 puppies with generateStaticParams and dynamicParams = false: both variants (available and gone home), the gallery with the full-screen viewer (keyboard, swipe, video), the facts card, checklist, way-home steps, the enquiry letter form UI (the server action comes in P5), prev/next, metadata and BreadcrumbList JSON-LD.
+- /puppies/[slug] for all 42 puppies with generateStaticParams, but no dynamicParams export (it fails the build on Next 16.4): unknown slugs call notFound() and must return a real 404 on the first hit, as the handover describes. Build both variants (available and gone home), the gallery with the full-screen viewer (keyboard, swipe, video), the facts card, checklist, way-home steps, the enquiry letter form UI (the server action comes in P5), prev/next, metadata and BreadcrumbList JSON-LD.
 - /gone-home with the 27 tickets.
 Compare with the reference at 375 and 1440, then commit.
 ```

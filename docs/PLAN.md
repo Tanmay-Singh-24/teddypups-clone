@@ -421,7 +421,7 @@ Copy is in `docs/reference/outlines/<page>.txt`; structure is in `docs/reference
 
 ### 6.2 `/puppies/[slug]` (42 pages, SSG; screens 20–21)
 
-- `generateStaticParams` over all 42 puppies with `dynamicParams = false`; anything else hits the "LOST" page with the title "Puppy not found".
+- `generateStaticParams` over all 42 puppies; anything else hits the "LOST" page with the title "Puppy not found" and a 404 status. Don't export `dynamicParams`: with `cacheComponents` on (Next 16.4) it fails the build, so the page calls `notFound()` itself (see `docs/HANDOVER.md`).
 - **Background tint:** `linear-gradient(180deg, color-mix(in oklab, {media[0].color} 24%, var(--color-milk)) 0, …)`. Copy the full gradient from the HTML.
 - **Breadcrumb:** Available puppies (or **Gone home**) / {label}.
 - **Chapters** are numbered circles with a hand-font title.
