@@ -2,11 +2,16 @@
   "name": "teddypups-clone",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "content:extract": "node scripts/extract-content.mjs",
+    "content:media": "node scripts/fetch-media.mjs",
+    "content:verify": "node scripts/verify-content.mjs"
   },
   "dependencies": {
     "lenis": "^1.3.27",
@@ -24,6 +29,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.3",
+    "node-html-parser": "^9.0.6",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
