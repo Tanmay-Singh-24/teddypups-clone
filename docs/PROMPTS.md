@@ -73,11 +73,15 @@ Run everything, show me the verify output, then commit.
 
 **Follow-ups:**
 
-### P2: global shell · sent: ☐ ____
+### P2: global shell · sent: ☑ Sun 1 Nov 2026, 02:15 IST (Claude Code, Opus, fresh session)
 
 ```text
 Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§2.4, §6.8 and §9 P2). Build the global shell so it matches the reference at 375, 768, 1024 and 1440 px: the header (desktop nav with the active paw, WhatsApp pill, scrolled/hidden states, the transparent home variant vs inner pages with the scalloped hem), the mobile menu <dialog>, the footer (night sky, basket mascot, Explore and Say hello columns, socials, bottom row), the mobile bottom bar, the skip link, a Lenis smooth-scroll provider, the "LOST" not-found page, the global error page, and stub pages for every route in §2.2 so every link works. Turn the SVG artwork you need into components in src/components/art/. Compare against docs/reference/screens/ and the live site in the browser side by side, fix differences, then commit.
 ```
+
+*Sent as part of a pasted message: the planning session's handover note (links, what P0/P1 built, lessons learned, how to start the next session), whose step 2 is this prompt verbatim.*
+
+**Output:** header (states, active paw, menu dialog), footer (night sky, basket Teddy), bottom bar, skip link, Lenis, cursor paw trail, LOST not-found, segment + global error pages, stubs for all 49 URLs. Teddy is a typed rig (`src/components/art/teddy/rig.ts`) that reproduces all 13 reference poses exactly. Element boxes and styles measured identical to the live site at 375/768/1024/1440.
 
 **Follow-ups:**
 
