@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "content:extract": "node scripts/extract-content.mjs",
     "content:media": "node scripts/fetch-media.mjs",
-    "content:verify": "node scripts/verify-content.mjs"
+    "content:verify": "node scripts/verify-content.mjs",
+    "content:svgs": "node scripts/extract-svgs.mjs"
   },
   "dependencies": {
     "lenis": "^1.3.27",

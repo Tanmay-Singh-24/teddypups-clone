@@ -23,13 +23,17 @@ The assignment asks for the **exact prompts** given to AI tools. Each prompt is 
 
 > get started with the build
 
-**Output:** phase P0 done in the planning session itself rather than a fresh one: Next.js 16.4.3 scaffold, fonts with variation axes, design tokens, metadata, headers. Then P1 (content and media extraction) started.
+**Output:** phases **P0 and P1** done in this same session instead of fresh ones:
+- **P0:** Next.js 16.4.3 scaffold, fonts with variation axes (computed styles match the reference exactly), design tokens, metadata (noindex), robots and sitemap, production security headers.
+- **P1:** content extracted from the reference payloads (15 + 27 puppies, 64 photos, 9 FAQs), 205 media files downloaded (69 MB), every generated string verified against all 42 profile pages, and 129 SVGs dumped to `docs/reference/svg/`.
+
+The next phase prompt to paste is **P2**. The repo isn't on GitHub yet: creating the public repo was left for your go-ahead.
 
 ---
 
 ## Phase prompts (paste one per fresh session)
 
-### P0: scaffold and skeleton deploy · sent: ☐ ____
+### P0: scaffold and skeleton deploy · done in #2 (GitHub push pending)
 
 ```text
 I'm building a faithful clone of https://puppy.instabizweb.com ("TeddyPups U.A.E.") for a 48-hour hiring assignment from Insta Biz Web. The repo folder is ~/VSCode/teddypups-clone. Before anything else, read docs/PLAN.md end to end and docs/CLAUDE.root.md — they are the spec and the rules. The reference site is captured offline in docs/reference/ (every page's HTML, the compiled CSS pretty-printed, JS chunks, outlines, screenshots).
@@ -48,7 +52,7 @@ Then stop and give me the exact clicks to import the repo into Vercel so I get a
 
 **Follow-ups:**
 
-### P1: content, media, artwork · sent: ☐ ____
+### P1: content, media, artwork · done in #2
 
 ```text
 Read CLAUDE.md and docs/PLAN.md (§4 and §9 P1). Do phase P1:
