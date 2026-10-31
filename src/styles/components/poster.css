@@ -1,0 +1,135 @@
+/* The not-found "LOST" poster (docs/PLAN.md §6.8) and the washi tape shared by paper components. */
+
+.tp-tape {
+  position: absolute;
+  z-index: 2;
+  width: clamp(4rem, 34%, 6.2rem);
+  height: 1.35rem;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 3px, #ffffff24 3px 5px),
+    linear-gradient(90deg, #ffffff47, transparent 30%, #ffffff2e 70%, transparent),
+    color-mix(in oklab, var(--tape, #f6d79a) 78%, transparent);
+  opacity: 0.88;
+  clip-path: polygon(0 10%, 3% 0, 50% 4%, 97% 0, 100% 14%, 98% 40%, 100% 66%, 97% 100%, 50% 96%, 3% 100%, 0 86%, 2% 52%);
+  pointer-events: none;
+  transition:
+    scale 0.35s var(--ease-pounce),
+    opacity 0.3s;
+}
+.tp-tape--center {
+  top: -0.7rem;
+  left: 50%;
+  translate: -50%;
+  rotate: -3deg;
+}
+.tp-tape--left {
+  top: -0.55rem;
+  left: 10%;
+  rotate: -9deg;
+}
+.tp-tape--right {
+  top: -0.55rem;
+  right: 10%;
+  rotate: 8deg;
+}
+.tp-tape--tl,
+.tp-tape--tr {
+  top: 0.05rem;
+  width: clamp(3.2rem, 26%, 4.6rem);
+}
+.tp-tape--tl {
+  left: -1rem;
+  rotate: -40deg;
+}
+.tp-tape--tr {
+  right: -1rem;
+  rotate: 40deg;
+}
+
+.tp-poster {
+  position: relative;
+  width: min(100%, 34rem);
+  padding: clamp(1.6rem, 5vw, 2.6rem) clamp(1.2rem, 4.5vw, 2.4rem) 0;
+  border: 3px solid var(--color-cocoa);
+  border-radius: 0.6rem;
+  background: radial-gradient(at 20% 10%, #fff9, #0000 60%), #fff6df;
+  box-shadow: 8px 12px #2a170e29;
+  color: var(--color-cocoa);
+  text-align: center;
+  rotate: -1.2deg;
+  animation: tp-poster-in 0.9s var(--ease-pounce) both;
+}
+.tp-poster__kicker {
+  color: var(--color-toffee-ink);
+  font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+}
+.tp-poster__title {
+  margin-top: 0.2rem;
+  font-size: clamp(4rem, 15vw, 7.5rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.tp-poster__photo {
+  width: min(70%, 17rem);
+  margin: 0.6rem auto 0;
+  padding: 0.6rem 0.6rem 0.2rem;
+  border: 3px dashed #2a170e66;
+  border-radius: 0.5rem;
+  background: var(--color-milk);
+}
+.tp-poster__desc {
+  max-width: 34ch;
+  margin: 1.2rem auto 0;
+  color: var(--color-cocoa-soft);
+}
+.tp-poster__reward {
+  margin-top: 1.1rem;
+  color: var(--color-toffee-ink);
+}
+
+/* Tear-off tabs along the bottom edge, separated by dashed cut lines. */
+.tp-poster__tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin: 0.8rem calc(-1 * clamp(1.2rem, 4.5vw, 2.4rem)) 0;
+  border-top: 2.5px dashed #2a170e80;
+}
+.tp-poster__tabs li + li {
+  border-left: 2.5px dashed #2a170e80;
+}
+.tp-poster__tab {
+  display: grid;
+  place-items: center;
+  height: 8.5rem;
+  padding: 0.6rem 0.2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  writing-mode: vertical-rl;
+  transform-origin: 50% 0;
+  transition:
+    rotate 0.45s var(--ease-pounce),
+    background-color 0.25s ease;
+}
+.tp-poster__tab:hover,
+.tp-poster__tab:focus-visible {
+  background: var(--color-honey-soft);
+  rotate: 8deg;
+}
+.tp-poster li:nth-child(2n) .tp-poster__tab:hover {
+  rotate: -8deg;
+}
+
+@keyframes tp-poster-in {
+  from {
+    opacity: 0;
+    transform: translateY(-1.5rem) rotate(3deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tp-poster {
+    animation: none;
+  }
+  .tp-poster__tab {
+    transition: none;
+  }
+}

@@ -1,0 +1,68 @@
+/* Teddy buddies and the stops the pup actor walks between (docs/PLAN.md §8.2). */
+
+.pup-stop {
+  pointer-events: none;
+}
+.pup-stop > .pup-buddy {
+  width: 100%;
+}
+/* Once the live actor boots it owns the stage; the static stand-ins step aside. */
+html[data-pup] .pup-stop > .pup-buddy {
+  visibility: hidden;
+}
+
+.pup-buddy > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.pup-buddy > .pup-bubble {
+  bottom: 84%;
+  left: 72%;
+}
+.pup-buddy[data-facing="left"] > .pup-bubble {
+  left: 28%;
+}
+.pup-buddy[data-live] > svg :is(path, ellipse, circle) {
+  pointer-events: visiblePainted;
+  cursor: pointer;
+}
+:is(.pup-buddy, .pup-actor) svg [opacity="0"],
+:is(.pup-buddy, .pup-actor) svg [opacity="0"] * {
+  pointer-events: none !important;
+}
+
+.pup-bubble {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.3rem 0.85rem 0.35rem;
+  border: 2.5px solid var(--color-cocoa);
+  border-radius: 1.1rem 1.1rem 1.1rem 0.25rem;
+  background: var(--color-milk);
+  box-shadow: 2px 3px #2a170e2e;
+  color: var(--color-cocoa);
+  font-family: var(--font-hand);
+  font-size: 1.05rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
+  transform-origin: 30% 100%;
+  translate: -50%;
+  scale: 0.4;
+  transition:
+    scale 0.4s var(--ease-pounce),
+    opacity 0.18s ease-out;
+}
+.pup-bubble[data-show="true"] {
+  opacity: 1;
+  scale: 1;
+}
+
+/* Phones (and short landscape touch screens): only "lane" stops keep their mascot. */
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference),
+  (pointer: coarse) and (max-height: 519px) and (prefers-reduced-motion: no-preference) {
+  .pup-stop:not([data-lane]) {
+    display: none;
+  }
+}

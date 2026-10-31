@@ -1,5 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Figtree, Fraunces, Shantell_Sans } from "next/font/google";
+import { BottomBar } from "@/components/layout/BottomBar";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { SkipLink } from "@/components/layout/SkipLink";
+import { LenisProvider } from "@/components/motion/LenisProvider";
+import { PawTrail } from "@/components/motion/PawTrail";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/content/site";
 import "./globals.css";
 
@@ -56,7 +62,17 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${fraunces.variable} ${figtree.variable} ${shantell.variable}`}>
-      <body>{children}</body>
+      <body>
+        <LenisProvider />
+        <SkipLink />
+        <Header />
+        <main id="main" tabIndex={-1} className="relative pt-[var(--header-h)] outline-none">
+          {children}
+        </main>
+        <Footer />
+        <BottomBar />
+        <PawTrail />
+      </body>
     </html>
   );
 }

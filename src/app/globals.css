@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Component CSS stays unlayered (as in the reference) so it wins over utilities where both apply. */
+@import "../styles/components/lenis.css";
+@import "../styles/components/header.css";
+@import "../styles/components/footer.css";
+@import "../styles/components/pup.css";
+@import "../styles/components/poster.css";
+
 /* ── Design tokens (docs/PLAN.md §2.3) ─────────────────────────────── */
 @theme {
   --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
@@ -72,6 +79,18 @@
       --header-h: 4rem;
       --bar-h: calc(4rem + env(safe-area-inset-bottom));
     }
+  }
+}
+
+/* Reduced motion: every transition and animation snaps straight to its end state. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
 
@@ -156,6 +175,11 @@
     stroke-linejoin: round;
   }
 
+  .pup-buddy {
+    position: relative;
+    pointer-events: none;
+  }
+
   .sr-only-focusable:not(:focus) {
     position: absolute;
     width: 1px;
@@ -197,6 +221,11 @@
 
 @utility text-big {
   font-size: clamp(2rem, 4.2vw, 4rem);
+}
+
+@utility text-lede {
+  font-size: clamp(1.125rem, 1.4vw, 1.375rem);
+  line-height: 1.5;
 }
 
 @utility gutter {
