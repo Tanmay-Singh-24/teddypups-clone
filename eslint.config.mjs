@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Offline capture of the reference site (minified third-party code).
+    "docs/reference/**",
   ]),
 ]);
 

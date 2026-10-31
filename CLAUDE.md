@@ -1,6 +1,11 @@
 # TeddyPups clone — standing instructions
 
-> Phase P0 moves this file to the repo root as `CLAUDE.md`.
+@AGENTS.md
+
+**Next.js 16.4 notes for this repo:**
+- `cacheComponents` and `partialPrefetching` are on, as in the reference. Pages are prerendered static shells. `useSearchParams` and other dynamic reads must sit inside `<Suspense>`. Dynamic routes need a non-empty `generateStaticParams`.
+- With Cache Components, navigation keeps recently visited routes mounted but hidden (React `<Activity>`). Effects clean up and re-run when a route hides or reappears. Never assume a page's effects only run once (relevant for Lenis, the pup director, dialogs and the curtain).
+- Read the bundled docs in `node_modules/next/dist/docs/` before using an API you're unsure of.
 
 **Goal:** a faithful clone of https://puppy.instabizweb.com ("TeddyPups U.A.E."), matching its design, layout, responsiveness and functionality, built for the Insta Biz Web technical assignment (48-hour deadline). Deliverables: live URL (Vercel), public GitHub repo, Loom walkthrough.
 

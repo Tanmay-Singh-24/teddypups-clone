@@ -19,6 +19,12 @@ The assignment asks for the **exact prompts** given to AI tools. Each prompt is 
 
 **Output:** reference recon (49 pages, CSS, fonts, JS, behaviours, screenshots) → `docs/PLAN.md`, `docs/CLAUDE.root.md`, this file, and `docs/reference/` (local only).
 
+## #2 Build kick-off: Sun 1 Nov 2026, ~01:10 IST, same session (Claude Code, Opus)
+
+> get started with the build
+
+**Output:** phase P0 done in the planning session itself rather than a fresh one: Next.js 16.4.3 scaffold, fonts with variation axes, design tokens, metadata, headers. Then P1 (content and media extraction) started.
+
 ---
 
 ## Phase prompts (paste one per fresh session)
