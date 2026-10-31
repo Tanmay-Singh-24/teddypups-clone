@@ -85,10 +85,14 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§2.4, §6.8 and §9 P2). Bui
 
 **Follow-ups:**
 
+> Update and push
+
+*(02:43 IST)* Updated `docs/HANDOVER.md` for P2, pointed the P3–P8 prompts at it, pushed `main`.
+
 ### P3: homepage, static layout · sent: ☐ ____
 
 ```text
-Read CLAUDE.md and docs/PLAN.md (§5 and §9 P3). Build the 8 homepage scenes (hero → home) with the exact copy, artwork, sky gradients and quilt bands, fully responsive at 375/768/1024/1440 — without the scroll choreography yet (that's P6), but with every hook P6 needs: the .pup-stop anchors with their pose data and static buddy mascots, doors/stamps/house in their initial and final states, the sticky stage markup for the Meet hallway. On mobile the Meet section is the 2-column grid of open doors. Match the section heights in §5 within about 10%. Check every scene side by side with the live reference and docs/reference/screens/, then commit (one commit per scene or two is fine).
+Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§5 and §9 P3). Build the 8 homepage scenes (hero → home) with the exact copy, artwork, sky gradients and quilt bands, fully responsive at 375/768/1024/1440 — without the scroll choreography yet (that's P6), but with every hook P6 needs: the .pup-stop anchors with their pose data and static buddy mascots, doors/stamps/house in their initial and final states, the sticky stage markup for the Meet hallway. On mobile the Meet section is the 2-column grid of open doors. Match the section heights in §5 within about 10%. Check every scene side by side with the live reference and docs/reference/screens/, then commit (one commit per scene or two is fine).
 ```
 
 **Follow-ups:**
@@ -96,7 +100,7 @@ Read CLAUDE.md and docs/PLAN.md (§5 and §9 P3). Build the 8 homepage scenes (h
 ### P4: puppies pages · sent: ☐ ____
 
 ```text
-Read CLAUDE.md and docs/PLAN.md (§6.1–6.3, §7 and §9 P4). First click every filter chip on the live /puppies page and note the exact URL parameter names, values, count texts and the empty state (open /puppies?origin=local). Then build:
+Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§6.1–6.3, §7 and §9 P4). First click every filter chip on the live /puppies page and note the exact URL parameter names, values, count texts and the empty state (open /puppies?origin=local). Then build:
 - /puppies: sketchbook header, filter panel synced to the URL, count line, sketch cards with Motion layout animation, the gone-home strip.
 - /puppies/[slug] for all 42 puppies with generateStaticParams and dynamicParams = false: both variants (available and gone home), the gallery with the full-screen viewer (keyboard, swipe, video), the facts card, checklist, way-home steps, the enquiry letter form UI (the server action comes in P5), prev/next, metadata and BreadcrumbList JSON-LD.
 - /gone-home with the 27 tickets.
@@ -108,7 +112,7 @@ Compare with the reference at 375 and 1440, then commit.
 ### P5: other pages and forms · sent: ☐ ____
 
 ```text
-Read CLAUDE.md and docs/PLAN.md (§6.4–6.7, §7 and §9 P5). Build /happy-families (wall of 64 + the shared photo viewer), /how-it-works (anchor chips, the In Dubai / Imported switch with both journeys, promise stamps, delivery, why, board), /faq (cork-board accordion, search with <mark> highlighting and auto-expand, counts, empty state, FAQPage JSON-LD) and /contact (the fill-in-the-blanks letter form with the puppy select, contact column, shopfront with the Google Maps link). Then wire both forms (contact letter + puppy enquiry) to one Server Action as §7 describes: zod validation, honeypot, inline field errors, pending state, the reference's success states and the post-box animation, email through Resend only when RESEND_API_KEY is set (otherwise log). Never submit forms on the live reference site. Commit.
+Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§6.4–6.7, §7 and §9 P5). Build /happy-families (wall of 64 + the shared photo viewer), /how-it-works (anchor chips, the In Dubai / Imported switch with both journeys, promise stamps, delivery, why, board), /faq (cork-board accordion, search with <mark> highlighting and auto-expand, counts, empty state, FAQPage JSON-LD) and /contact (the fill-in-the-blanks letter form with the puppy select, contact column, shopfront with the Google Maps link). Then wire both forms (contact letter + puppy enquiry) to one Server Action as §7 describes: zod validation, honeypot, inline field errors, pending state, the reference's success states and the post-box animation, email through Resend only when RESEND_API_KEY is set (otherwise log). Never submit forms on the live reference site. Commit.
 ```
 
 **Follow-ups:**
@@ -116,7 +120,7 @@ Read CLAUDE.md and docs/PLAN.md (§6.4–6.7, §7 and §9 P5). Build /happy-fami
 ### P6a: scroll motion · sent: ☐ ____
 
 ```text
-Read CLAUDE.md and docs/PLAN.md (§8.1, §8.4 and §9 P6a). Add the scroll choreography: header hide/show, the hero lineup pop-up cycling with name tags and the "hm?" bubble, the pinned Meet hallway (≥768 px; track translateX from scroll progress, doors opening as they reach the pup, moving floor), the journey phone sequence (active step, typing dots, messages per step, video play), passport stamps and the sunset, night twinkles, the house door opening, footer basket idles, and the micro-interactions checklist in §8.4. Use the keyframes and timings in docs/reference/css/main.pretty.css as the spec. Everything must degrade cleanly with prefers-reduced-motion and in browsers without animation-timeline (test Safari via the fallback path). Commit.
+Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§8.1, §8.4 and §9 P6a). Add the scroll choreography: header hide/show, the hero lineup pop-up cycling with name tags and the "hm?" bubble, the pinned Meet hallway (≥768 px; track translateX from scroll progress, doors opening as they reach the pup, moving floor), the journey phone sequence (active step, typing dots, messages per step, video play), passport stamps and the sunset, night twinkles, the house door opening, footer basket idles, and the micro-interactions checklist in §8.4. Use the keyframes and timings in docs/reference/css/main.pretty.css as the spec. Everything must degrade cleanly with prefers-reduced-motion and in browsers without animation-timeline (test Safari via the fallback path). Commit.
 ```
 
 **Follow-ups:**
@@ -124,7 +128,7 @@ Read CLAUDE.md and docs/PLAN.md (§8.1, §8.4 and §9 P6a). Add the scroll chore
 ### P6b: page curtain and pup actor · sent: ☐ ____
 
 ```text
-Read CLAUDE.md and docs/PLAN.md (§8.2, §8.3, §9 P6b and §10). Build (1) the page-transition curtain — the quilt rises, the runner dog crosses with paw prints and "every puppy is family", and it lifts once the new route has rendered — used by every internal link; and (2) the pup actor: one fixed-layer mascot that travels between the homepage .pup-stop anchors as the user scrolls, with walk/sit/peek/bow/treadmill poses, facing, blink/ear/tail idles, speech bubbles and paw prints stamped along its path, plus the "lane" mode under 768 px. Read docs/reference/js/_PUP-ENGINE.js only to understand the behaviour and timings, and write our own typed implementation. Timebox the pup to about 4 hours: if it isn't convincing by then, stop, tell me, and ship the static mascots with idle animations (cut line 1). Commit.
+Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§8.2, §8.3, §9 P6b and §10). Build (1) the page-transition curtain — the quilt rises, the runner dog crosses with paw prints and "every puppy is family", and it lifts once the new route has rendered — used by every internal link; and (2) the pup actor: one fixed-layer mascot that travels between the homepage .pup-stop anchors as the user scrolls, with walk/sit/peek/bow/treadmill poses, facing, blink/ear/tail idles, speech bubbles and paw prints stamped along its path, plus the "lane" mode under 768 px. Read docs/reference/js/_PUP-ENGINE.js only to understand the behaviour and timings, and write our own typed implementation. Timebox the pup to about 4 hours: if it isn't convincing by then, stop, tell me, and ship the static mascots with idle animations (cut line 1). Commit.
 ```
 
 **Follow-ups:**
@@ -132,7 +136,7 @@ Read CLAUDE.md and docs/PLAN.md (§8.2, §8.3, §9 P6b and §10). Build (1) the 
 ### P7: QA and tests · sent: ☐ ____
 
 ```text
-Read CLAUDE.md and docs/PLAN.md (§11 and §9 P7). Add Playwright e2e tests in e2e/ for everything listed in §11, an npm script test:e2e, and a GitHub Actions workflow (install, lint, typecheck, build, Playwright chromium; upload the report on failure). Add scripts/shots.mjs to capture every page at 375 and 1440 for both the reference and our build into docs/shots/. Then do a fidelity pass page by page using those shots and fix every visible difference, run Lighthouse (desktop + mobile) and fix accessibility/performance issues, and check reduced motion and keyboard-only navigation. Commit and push; make sure CI is green.
+Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§11 and §9 P7). Add Playwright e2e tests in e2e/ for everything listed in §11, an npm script test:e2e, and a GitHub Actions workflow (install, lint, typecheck, build, Playwright chromium; upload the report on failure). Add scripts/shots.mjs to capture every page at 375 and 1440 for both the reference and our build into docs/shots/. Then do a fidelity pass page by page using those shots and fix every visible difference, run Lighthouse (desktop + mobile) and fix accessibility/performance issues, and check reduced motion and keyboard-only navigation. Commit and push; make sure CI is green.
 ```
 
 **Follow-ups:**
@@ -140,7 +144,7 @@ Read CLAUDE.md and docs/PLAN.md (§11 and §9 P7). Add Playwright e2e tests in e
 ### P8: ship · sent: ☐ ____
 
 ```text
-Read CLAUDE.md and docs/PLAN.md (§12 and §13). Confirm the production deployment on Vercel is green and click through every route, a filter, a gallery, the FAQ search and both forms on the live URL in the browser. Write README.md as §13 describes (live URL, screenshots, stack, structure, how to run, how it was built, decisions and challenges, testing, deployment, AI usage linking docs/PROMPTS.md, credits/disclaimer). Make sure docs/PROMPTS.md has every prompt I sent. Then give me a short checklist for recording the Loom following §13's outline, with the files and URLs to have open, and draft the submission email with the exact subject line.
+Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§12 and §13). Confirm the production deployment on Vercel is green and click through every route, a filter, a gallery, the FAQ search and both forms on the live URL in the browser. Write README.md as §13 describes (live URL, screenshots, stack, structure, how to run, how it was built, decisions and challenges, testing, deployment, AI usage linking docs/PROMPTS.md, credits/disclaimer). Make sure docs/PROMPTS.md has every prompt I sent. Then give me a short checklist for recording the Loom following §13's outline, with the files and URLs to have open, and draft the submission email with the exact subject line.
 ```
 
 **Follow-ups:**
