@@ -1,8 +1,10 @@
 // Temporary P0 page: checks the display type against docs/reference/screens/02-home-hero-1440.jpg.
 // Replaced by the real homepage scenes in P3.
+import Link from "next/link";
+
 export default function Home() {
   return (
-    <main id="main" className="gutter pt-[var(--header-h)] text-center">
+    <div className="gutter pb-24 text-center">
       <p className="font-scrawl text-toffee text-[1.35rem]">every puppy is family</p>
       <h1
         id="hero-title"
@@ -16,13 +18,13 @@ export default function Home() {
         worldwide.
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
-        <a href="/puppies" className="btn btn-primary">
+        <Link href="/puppies" className="btn btn-primary">
           View available puppies
-        </a>
+        </Link>
         <a href="#" className="btn btn-ghost">
           Enquire on WhatsApp
         </a>
       </div>
-    </main>
+    </div>
   );
 }
