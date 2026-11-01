@@ -262,3 +262,12 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§12 and §13). Confirm the p
 > the thing is that it sounds a lil too polished i want you to make it feel more human
 
 **Output:** the same script rewritten in a looser, spoken voice, given in the chat.
+
+> can you do one thing in the prompts md file make the prompts that i gave you more technical and of higher value keeping them human
+
+**Output:** advised against it: this file is the verbatim record the assignment asks for, so rewriting the prompts would misstate them; offered annotations instead. No change made.
+
+> https://www.loom.com/share/82ab64d7ab4f419aaa35f1a375070073
+> here is the loom video now give me the email that i need to send them
+
+**Output:** the submission email with the live URL, the repository and the Loom link, given in the chat.
