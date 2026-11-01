@@ -4,6 +4,7 @@ import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { usePathname, useSearchParams } from "next/navigation";
 import type { ReactNode } from "react";
 import { PupBuddy } from "@/components/art/PupBuddy";
+import { RevealScope } from "@/components/motion/RevealScope";
 import type { PuppyCard, Slugged } from "@/content/types";
 import { SketchCard } from "./SketchCard";
 
@@ -112,7 +113,7 @@ export function PuppyBrowser({ puppies, breeds, whatsappHref }: PuppyBrowserProp
         {shown.length === 1 ? "1 puppy" : `${shown.length} puppies`} {filtered ? "match" : "looking for a home"}
       </p>
       {shown.length ? (
-        <div>
+        <RevealScope>
           <motion.ul layout className="tp-sketches mt-8">
             <AnimatePresence mode="popLayout">
               {shown.map((p, i) => (
@@ -129,7 +130,7 @@ export function PuppyBrowser({ puppies, breeds, whatsappHref }: PuppyBrowserProp
               ))}
             </AnimatePresence>
           </motion.ul>
-        </div>
+        </RevealScope>
       ) : (
         <div className="tp-sketchpad mt-10 grid items-center gap-6 md:grid-cols-[auto_1fr] md:gap-10">
           <PupBuddy pose="sit" className="mx-auto w-44 md:w-52" label="Teddy, tilting his head" />

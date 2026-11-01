@@ -3,6 +3,7 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { Paw } from "@/components/art/Paw";
+import { RevealScope } from "@/components/motion/RevealScope";
 import { usePhotoViewer } from "@/components/ui/PhotoViewer";
 import type { Media } from "@/content/types";
 
@@ -29,38 +30,40 @@ export function FamilyWall({ photos }: { photos: Media[] }) {
   const { open, viewer } = usePhotoViewer(photos, SIZES);
   const n = photos.length;
   return (
-    <div>
-      <ul className="tp-wall" aria-label="Photos from TeddyPups families">
-        {photos.map((photo, i) => (
-          <li key={photo.id} className="tp-wall__item" data-reveal="true" style={{ "--d": `${(i % 4) * 60}ms` } as CSSProperties}>
-            <button type="button" className="tp-wall__print" aria-label={`Open photo ${i + 1} of ${n}`} onClick={() => open(i)}>
-              <span
-                className="tp-polaroid"
-                style={{ "--tilt": TILTS[i % 8], "--tape": TAPES[i % 5], "--i": i } as CSSProperties}
-              >
-                <TapeStrips at={AT[i % 8]} />
-                <span className="tp-polaroid__photo">
-                  <Image
-                    src={photo.url}
-                    alt={photo.alt}
-                    width={photo.width}
-                    height={photo.height}
-                    sizes={SIZES}
-                    loading={i < 2 ? "eager" : "lazy"}
-                    fetchPriority={i < 2 ? "high" : undefined}
-                    placeholder={photo.blurDataUrl ? "blur" : "empty"}
-                    blurDataURL={photo.blurDataUrl ?? undefined}
-                    style={{ width: "100%", height: "auto", backgroundColor: photo.color }}
-                  />
+    <>
+      <RevealScope>
+        <ul className="tp-wall" aria-label="Photos from TeddyPups families">
+          {photos.map((photo, i) => (
+            <li key={photo.id} className="tp-wall__item" data-reveal="true" style={{ "--d": `${(i % 4) * 60}ms` } as CSSProperties}>
+              <button type="button" className="tp-wall__print" aria-label={`Open photo ${i + 1} of ${n}`} onClick={() => open(i)}>
+                <span
+                  className="tp-polaroid"
+                  style={{ "--tilt": TILTS[i % 8], "--tape": TAPES[i % 5], "--i": i } as CSSProperties}
+                >
+                  <TapeStrips at={AT[i % 8]} />
+                  <span className="tp-polaroid__photo">
+                    <Image
+                      src={photo.url}
+                      alt={photo.alt}
+                      width={photo.width}
+                      height={photo.height}
+                      sizes={SIZES}
+                      loading={i < 2 ? "eager" : "lazy"}
+                      fetchPriority={i < 2 ? "high" : undefined}
+                      placeholder={photo.blurDataUrl ? "blur" : "empty"}
+                      blurDataURL={photo.blurDataUrl ?? undefined}
+                      style={{ width: "100%", height: "auto", backgroundColor: photo.color }}
+                    />
+                  </span>
+                  <span className="tp-polaroid__caption font-scrawl" />
                 </span>
-                <span className="tp-polaroid__caption font-scrawl" />
-              </span>
-              <Paw className="tp-wall__paw" />
-            </button>
-          </li>
-        ))}
-      </ul>
+                <Paw className="tp-wall__paw" />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </RevealScope>
       {viewer}
-    </div>
+    </>
   );
 }

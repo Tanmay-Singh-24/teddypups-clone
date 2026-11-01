@@ -13,6 +13,7 @@ import { ENQUIRY_SUCCESS, SITE_URL } from "@/content/site";
 import type { Puppy } from "@/content/types";
 import { puppyDescription, puppyFormLabel, puppyTitle } from "@/lib/puppy-text";
 import { puppyWaLink } from "@/lib/whatsapp";
+import { RevealScope } from "@/components/motion/RevealScope";
 
 // Every puppy is prerendered. An unknown slug renders on request, and `ensureStatic = "navigation"`
 // makes that first request wait for the complete render, so notFound() below sets a real 404 (the
@@ -120,7 +121,7 @@ export default async function PuppyPage({ params }: PageProps<"/puppies/[slug]">
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs).replace(/</g, "\\u003c") }}
         />
-        <div className="gutter mx-auto max-w-[110rem] pb-20 pt-8 md:pt-12">
+        <RevealScope className="gutter mx-auto max-w-[110rem] pb-20 pt-8 md:pt-12">
           <nav aria-label="Breadcrumb" className="text-[0.95rem] font-semibold text-cocoa-soft">
             <Link className="link-ink" href={home ? "/gone-home" : "/puppies"}>
               {home ? "Gone home" : "Available puppies"}
@@ -248,7 +249,7 @@ export default async function PuppyPage({ params }: PageProps<"/puppies/[slug]">
             <Neighbour puppy={previous} rel="Previous pup" />
             <Neighbour puppy={next} rel="Next pup" />
           </nav>
-        </div>
+        </RevealScope>
       </article>
     </div>
   );

@@ -5,6 +5,7 @@ import { PupBuddy } from "@/components/art/PupBuddy";
 import { Photo } from "@/components/ui/Photo";
 import { goneHomePuppies } from "@/content/puppies";
 import type { Puppy } from "@/content/types";
+import { RevealScope } from "@/components/motion/RevealScope";
 
 export const metadata: Metadata = {
   title: "Gone home",
@@ -88,13 +89,13 @@ export default function GoneHomePage() {
             </div>
           </div>
         </header>
-        <div>
+        <RevealScope>
           <ul className="tp-tickets" aria-label="Puppies who have gone home">
             {goneHomePuppies.map((p, i) => (
               <Ticket key={p.id} puppy={p} index={i} />
             ))}
           </ul>
-        </div>
+        </RevealScope>
       </div>
     </div>
   );

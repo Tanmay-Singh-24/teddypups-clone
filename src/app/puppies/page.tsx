@@ -6,6 +6,7 @@ import { PuppyBrowser } from "@/components/puppies/PuppyBrowser";
 import { SketchCard } from "@/components/puppies/SketchCard";
 import { allBreeds, availablePuppies, goneStripPuppies, toCard } from "@/content/puppies";
 import { lookingWaLink } from "@/lib/whatsapp";
+import { RevealScope } from "@/components/motion/RevealScope";
 
 export const metadata: Metadata = {
   title: "Available puppies",
@@ -21,7 +22,7 @@ export default function PuppiesPage() {
     <div data-page="pups" className="tp-page">
       <section aria-labelledby="pups-title" className="tp-sketchbook">
         <div className="gutter mx-auto max-w-[110rem] pb-24 pt-10 md:pt-16">
-          <div className="tp-sketchbook__head">
+          <RevealScope className="tp-sketchbook__head">
             <div className="tp-sketchbook__words">
               <p className="font-scrawl text-lg text-toffee-ink" data-reveal="true">
                 from Teddy&apos;s sketchbook
@@ -41,7 +42,7 @@ export default function PuppiesPage() {
               <PupBuddy pose="sit" facing="left" label="Teddy, the TeddyPups puppy" />
               <span className="font-scrawl tp-sketchbook__caption">self-portrait</span>
             </div>
-          </div>
+          </RevealScope>
           <div className="mt-12">
             {/* The filters read the URL, so they render in the browser; the server sends the full grid. */}
             <Suspense
@@ -61,7 +62,7 @@ export default function PuppiesPage() {
         </div>
       </section>
       <section aria-labelledby="gone-title" className="tp-gone-strip">
-        <div className="gutter mx-auto flex max-w-[110rem] flex-col gap-10 md:flex-row md:items-center">
+        <RevealScope className="gutter mx-auto flex max-w-[110rem] flex-col gap-10 md:flex-row md:items-center">
           <div className="md:w-1/3" data-reveal="true">
             <h2 id="gone-title" className="font-plush text-big">
               Already gone home
@@ -78,7 +79,7 @@ export default function PuppiesPage() {
               </li>
             ))}
           </ul>
-        </div>
+        </RevealScope>
       </section>
     </div>
   );

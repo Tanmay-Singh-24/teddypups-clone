@@ -3,6 +3,7 @@
 import { Fragment, useId, useMemo, useState, type CSSProperties } from "react";
 import { PupBuddy } from "@/components/art/PupBuddy";
 import type { Faq } from "@/content/types";
+import { RevealScope } from "@/components/motion/RevealScope";
 
 const TILTS = [-1.6, 1.2, -0.8, 1.8, -1.2, 0.7, -1.9, 1.4];
 const PINS = ["var(--color-toffee)", "var(--color-sky-deep)", "#d9a13c", "#c45a6a"];
@@ -65,7 +66,7 @@ export function NoticeBoard({ faqs, askHref }: { faqs: Faq[]; askHref: string })
           Ask your own question
         </a>
       </aside>
-      <div className="tp-notes__board">
+      <RevealScope className="tp-notes__board">
         <ul className="tp-notes__list">
           {shown.map((f, i) => {
             const unfolded = openId === f.id || (!!q && f.answer.toLowerCase().includes(q));
@@ -115,7 +116,7 @@ export function NoticeBoard({ faqs, askHref }: { faqs: Faq[]; askHref: string })
             </p>
           </div>
         )}
-      </div>
+      </RevealScope>
     </div>
   );
 }

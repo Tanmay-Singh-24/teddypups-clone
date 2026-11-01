@@ -4,6 +4,7 @@ import { PupBuddy } from "@/components/art/PupBuddy";
 import { FamilyWall } from "@/components/families/FamilyWall";
 import { familyPhotos } from "@/content/families";
 import { TESTIMONIAL } from "@/content/site";
+import { RevealScope } from "@/components/motion/RevealScope";
 
 export const metadata: Metadata = {
   title: "Happy families",
@@ -16,7 +17,7 @@ export default function HappyFamiliesPage() {
     <div data-page="families" className="tp-page">
       <section aria-labelledby="families-title" className="tp-memories">
         <div className="gutter mx-auto max-w-[110rem] pb-24 pt-10 md:pt-16">
-          <div className="tp-memories__head">
+          <RevealScope className="tp-memories__head">
             <div>
               <p className="font-scrawl text-lg text-toffee-ink" data-reveal="true">
                 our wall of happy endings
@@ -49,7 +50,7 @@ export default function HappyFamiliesPage() {
                 {TESTIMONIAL.name}, {TESTIMONIAL.place}
               </figcaption>
             </figure>
-          </div>
+          </RevealScope>
           <div className="mt-16 md:mt-20">
             <FamilyWall photos={familyPhotos} />
           </div>

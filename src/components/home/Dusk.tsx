@@ -6,6 +6,7 @@ import { PhotoWallViewer } from "@/components/ui/PhotoWallViewer";
 import { familyPhotos, homeFamilyPhotos } from "@/content/families";
 import { TESTIMONIAL } from "@/content/site";
 import { Scene } from "./Scene";
+import { RevealScope } from "@/components/motion/RevealScope";
 
 type Tape = "center" | "left" | "right" | "corners";
 
@@ -67,7 +68,7 @@ export function Dusk() {
       </div>
 
       <div className="tp-photowall">
-        <div className="tp-photowall__wall">
+        <RevealScope className="tp-photowall__wall">
           <ul className="tp-photowall__prints" aria-label="Photos from TeddyPups families">
             {wall.map((photo, i) => {
               const print = PRINTS[i];
@@ -119,7 +120,7 @@ export function Dusk() {
             </Link>
             <PupStop pose="sit" facing="right" className="tp-dusk__teddy" />
           </div>
-        </div>
+        </RevealScope>
         <div aria-hidden="true" className="tp-street__pavement" />
       </div>
     </Scene>
