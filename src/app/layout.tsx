@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { LenisProvider } from "@/components/motion/LenisProvider";
 import { PawTrail } from "@/components/motion/PawTrail";
+import { RouteCurtain } from "@/components/motion/RouteCurtain";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/content/site";
 import "./globals.css";
 
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${fraunces.variable} ${figtree.variable} ${shantell.variable}`}>
       <body>
+        <RouteCurtain />
         <LenisProvider />
         <SkipLink />
         <Header />

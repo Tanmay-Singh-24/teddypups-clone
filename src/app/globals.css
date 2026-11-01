@@ -23,6 +23,7 @@
 @import "../styles/components/journeys.css";
 @import "../styles/components/faq.css";
 @import "../styles/components/contact.css";
+@import "../styles/components/curtain.css";
 
 /* ── Design tokens (docs/PLAN.md §2.3) ─────────────────────────────── */
 @theme {
