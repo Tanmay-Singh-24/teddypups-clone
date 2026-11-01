@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
-import { SKYLINE } from "@/components/art/Flight";
+import { SKYLINE } from "@/components/art/skyline";
 import { PupBuddy } from "@/components/art/PupBuddy";
 
 const s = { fill: "none", stroke: "currentColor", strokeWidth: 2.6, strokeLinecap: "round", strokeLinejoin: "round" } as const;

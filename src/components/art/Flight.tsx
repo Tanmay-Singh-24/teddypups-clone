@@ -1,25 +1,53 @@
-import { optimizedSrc } from "@/components/ui/Photo";
-import type { Puppy } from "@/content/types";
+"use client";
 
-/** The Downtown Dubai skyline line art (viewBox 300×120). */
-export const SKYLINE =
-  "M4 116h292M20 116V78h16v38M44 116V60h18v56M70 116V84h12v32M150 116V36l4-6v-14l3-4 3 4v14l4 6v80M118 116V70l12-8v54M174 116V64l14 8v44M200 116V82h18v34M226 116V56h14v60M248 116V88h22v28";
+import { useScroll } from "motion/react";
+import { useEffect, useId, useRef } from "react";
+import { useReducedMotion } from "@/components/motion/useReducedMotion";
+
+const ROUTE = "M40 250 C 170 40, 470 20, 620 168";
 
 /**
- * A plane on a dotted route from Korea to Dubai (viewBox 660×300). With a `passenger`, the puppy
- * looks out of the porthole (homepage); without one it is the empty plane (/how-it-works).
+ * A plane on a dotted route from Korea to Dubai (viewBox 660×300). As the drawing scrolls through
+ * the viewport the plane flies along the route, turning with the curve, and fades in just after
+ * take-off. With a `photo`, a puppy looks out of the porthole (homepage). The server draws it
+ * mid-route; reduced motion parks it at 62% of the way.
  */
-export function Flight({ label, passenger }: { label: string; passenger?: Puppy }) {
-  const porthole = passenger && optimizedSrc(passenger.cover.url, 128);
+export function Flight({ label, photo }: { label: string; photo?: string }) {
+  const box = useRef<HTMLDivElement>(null);
+  const route = useRef<SVGPathElement>(null);
+  const plane = useRef<SVGGElement>(null);
+  const reduced = useReducedMotion();
+  const clipId = useId();
+  const { scrollYProgress } = useScroll({ target: box, offset: ["start 95%", "end 25%"] });
+
+  useEffect(() => {
+    const fly = (progress: number) => {
+      const path = route.current;
+      const g = plane.current;
+      if (!path || !g) return;
+      const length = path.getTotalLength();
+      const at = Math.min(length, Math.max(0, progress * length));
+      const p = path.getPointAtLength(at);
+      const ahead = path.getPointAtLength(Math.min(length, at + 1));
+      const behind = path.getPointAtLength(Math.max(0, at - 1));
+      const angle = (Math.atan2(ahead.y - behind.y, ahead.x - behind.x) * 180) / Math.PI;
+      g.setAttribute("transform", `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)}) rotate(${angle.toFixed(1)})`);
+      g.style.opacity = String(Math.min(1, Math.max(0, (progress - 0.11) / 0.06)));
+    };
+    fly(reduced ? 0.62 : scrollYProgress.get());
+    if (reduced) return;
+    return scrollYProgress.on("change", fly);
+  }, [reduced, scrollYProgress]);
+
   return (
-    <div className="tp-flight">
+    <div ref={box} className="tp-flight">
       <svg viewBox="0 0 660 300" role="img" aria-label={label}>
         <defs>
-          <clipPath id="tp-flight-porthole">
+          <clipPath id={clipId}>
             <circle r="25" />
           </clipPath>
         </defs>
-        <path d="M40 250 C 170 40, 470 20, 620 168" className="tp-flight__route" />
+        <path ref={route} d={ROUTE} className="tp-flight__route" />
         <circle cx="40" cy="250" r="7" className="tp-flight__dot" />
         <circle cx="620" cy="168" r="7" className="tp-flight__dot" />
         <text x="40" y="284" textAnchor="middle" className="tp-flight__label">
@@ -28,7 +56,7 @@ export function Flight({ label, passenger }: { label: string; passenger?: Puppy 
         <text x="620" y="202" textAnchor="middle" className="tp-flight__label">
           Dubai
         </text>
-        <g transform="translate(410 70)">
+        <g ref={plane} transform="translate(410 70)">
           <g transform="translate(-126 -78)">
             <path d="M28 60 L8 26 L34 26 L60 54 Z" className="tp-flight__wing" />
             <path d="M108 112 L142 156 L172 156 L158 112 Z" className="tp-flight__wing tp-flight__wing--far" />
@@ -39,15 +67,15 @@ export function Flight({ label, passenger }: { label: string; passenger?: Puppy 
             <path d="M104 44 L138 2 L168 2 L154 44 Z" className="tp-flight__wing" />
             <path d="M206 64 C215 67 221 73 224 80" className="tp-flight__line" />
           </g>
-          {porthole && (
+          {photo && (
             <g transform="translate(10 2)">
               <image
-                href={porthole}
+                href={photo}
                 x="-25"
                 y="-25"
                 width="50"
                 height="50"
-                clipPath="url(#tp-flight-porthole)"
+                clipPath={`url(#${clipId})`}
                 preserveAspectRatio="xMidYMid slice"
               />
               <circle r="25" className="tp-flight__porthole" />

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
-import { SKYLINE } from "@/components/art/Flight";
+import { SKYLINE } from "@/components/art/skyline";
 import { Paw } from "@/components/art/Paw";
 import { PupBuddy } from "@/components/art/PupBuddy";
 import { LetterForm } from "@/components/forms/LetterForm";

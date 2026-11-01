@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Flight, SKYLINE } from "@/components/art/Flight";
+import { Flight } from "@/components/art/Flight";
+import { SKYLINE } from "@/components/art/skyline";
 import { PupStop } from "@/components/motion/PupStop";
-import { Photo } from "@/components/ui/Photo";
+import { optimizedSrc, Photo } from "@/components/ui/Photo";
 import { showroomPhotos } from "@/content/home";
 import { getPuppy } from "@/content/puppies";
 import { Scene } from "./Scene";
@@ -53,7 +54,10 @@ export function Paths() {
               Imported for you
             </h3>
             <div className="tp-way__scene" data-pup-look="true">
-              <Flight label="A plane bringing a Korean Teacup Maltipoo puppy from Korea to Dubai" passenger={passenger} />
+              <Flight
+                label="A plane bringing a Korean Teacup Maltipoo puppy from Korea to Dubai"
+                photo={optimizedSrc(passenger.cover.url, 128)}
+              />
             </div>
             <p className="tp-way__text">
               Exclusive Korean teacup puppies, delivered. Order from the world&apos;s most reputable breeders and let us

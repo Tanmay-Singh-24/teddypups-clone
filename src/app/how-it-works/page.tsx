@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
-import { Flight, SKYLINE } from "@/components/art/Flight";
+import { Flight } from "@/components/art/Flight";
+import { SKYLINE } from "@/components/art/skyline";
 import { PupBuddy } from "@/components/art/PupBuddy";
 import { ChatDots, HeartPulse, PlaneTrail } from "@/components/art/StampIcons";
 import { Journeys } from "@/components/how/Journeys";
