@@ -9,6 +9,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
+    "test:e2e": "playwright test",
+    "shots": "node scripts/shots.mjs",
     "content:extract": "node scripts/extract-content.mjs",
     "content:media": "node scripts/fetch-media.mjs",
     "content:verify": "node scripts/verify-content.mjs",
