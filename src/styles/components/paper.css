@@ -1,0 +1,106 @@
+/* Shared paper surfaces: the board, the dotted paper card, numbered trails and the letter. Layered as
+   components (as in the reference), so utilities on the same element win. Puppy profiles use all four;
+   /how-it-works and /contact reuse them in P5. */
+
+@layer components {
+  .tp-board {
+    position: relative;
+    padding: clamp(1.1rem, 2.6vw, 1.75rem);
+    border: 3px solid var(--color-cocoa);
+    border-radius: 1.6rem;
+    background: var(--color-milk);
+    color: var(--color-cocoa);
+    box-shadow: 6px 8px #2a170e24;
+  }
+  .tp-board::before {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border: 1.5px dashed #2a170e38;
+    border-radius: 1.2rem;
+    pointer-events: none;
+  }
+
+  .tp-paper {
+    position: relative;
+    padding: clamp(1.4rem, 3vw, 2.25rem);
+    border: 3px solid var(--color-cocoa);
+    border-radius: 1.4rem;
+    color: var(--color-cocoa);
+    background:
+      radial-gradient(circle at 0 0, #0000 0 17px, #c2622b14 17px 18.5px, #0000 18.5px) 0 0 / 36px 36px,
+      radial-gradient(circle at 18px 18px, #0000 0 17px, #c2622b0f 17px 18.5px, #0000 18.5px) 0 0 / 36px 36px,
+      #fff8ea;
+  }
+
+  .tp-trail {
+    display: grid;
+    gap: 2rem;
+  }
+  .tp-trail > li {
+    position: relative;
+    padding-left: 4.5rem;
+  }
+  .tp-trail > li:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    top: 3.9rem;
+    bottom: -1.6rem;
+    left: 1.6rem;
+    border-left: 3px dotted color-mix(in oklab, currentColor 40%, transparent);
+  }
+  @media (min-width: 1024px) {
+    .tp-trail--row {
+      grid-auto-columns: minmax(0, 1fr);
+      grid-auto-flow: column;
+      gap: 2.5rem;
+    }
+    .tp-trail--row > li {
+      padding-top: 4.6rem;
+      padding-left: 0;
+    }
+    .tp-trail--row > li:not(:last-child)::before {
+      inset: 1.6rem -2.1rem auto 4.1rem;
+      border-top: 3px dotted color-mix(in oklab, currentColor 40%, transparent);
+      border-left: 0;
+    }
+  }
+  .tp-trail__num {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 3.4rem;
+    height: 3.4rem;
+    border: 3px solid var(--color-cocoa);
+    border-radius: 50%;
+    background: var(--color-milk);
+    color: var(--color-cocoa);
+    font-size: 1.75rem;
+  }
+
+  .tp-letter {
+    position: relative;
+    padding: clamp(1.5rem, 4vw, 2.75rem);
+    border: 3px solid var(--color-cocoa);
+    border-radius: 1.6rem;
+    background: var(--color-milk);
+    color: var(--color-cocoa);
+    box-shadow: 8px 10px #2a170e29;
+  }
+  .tp-letter__stamp {
+    position: absolute;
+    top: -1.25rem;
+    right: 2rem;
+    display: grid;
+    place-items: center;
+    width: 4.75rem;
+    aspect-ratio: 1;
+    border: 3px dashed var(--color-toffee-deep);
+    border-radius: 0.5rem;
+    background: var(--color-honey-soft);
+    color: var(--color-toffee-deep);
+    rotate: 6deg;
+  }
+}

@@ -16,6 +16,9 @@
 @import "../styles/components/night.css";
 @import "../styles/components/house.css";
 @import "../styles/components/sketch.css";
+@import "../styles/components/paper.css";
+@import "../styles/components/storybook.css";
+@import "../styles/components/sketch.css";
 
 /* ── Design tokens (docs/PLAN.md §2.3) ─────────────────────────────── */
 @theme {

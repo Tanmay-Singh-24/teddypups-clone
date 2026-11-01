@@ -28,6 +28,8 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
+  // Profile galleries and the viewer load photos at q=85, as the reference does.
+  images: { qualities: [75, 85] },
   turbopack: {
     rules: {
       "*.css": {
