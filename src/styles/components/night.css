@@ -1,0 +1,81 @@
+/* Scene 7 · night: questions under the stars (docs/PLAN.md §5). Stars use .tp-twinkle from footer.css. */
+
+.tp-night {
+  position: relative;
+  padding-block: clamp(4.5rem, 10vh, 7rem);
+  overflow: hidden;
+}
+.tp-night__stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.tp-night__grid {
+  position: relative;
+  display: grid;
+  gap: 3rem;
+  max-width: 110rem;
+  margin-inline: auto;
+}
+.tp-night__cta {
+  margin-top: 2rem;
+}
+.tp-night__pup {
+  position: relative;
+  width: clamp(9.5rem, 30vw, 13rem);
+  margin-top: 2.25rem;
+}
+.tp-night__wonder {
+  position: absolute;
+  top: -2.4rem;
+  left: 58%;
+  color: var(--color-honey);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  line-height: 1;
+  animation: tp-float 3.4s ease-in-out infinite;
+}
+@keyframes tp-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-8px) rotate(8deg);
+  }
+}
+.tp-night__list {
+  display: grid;
+  gap: clamp(2rem, 4.5vh, 3.25rem);
+}
+.tp-qa__q {
+  display: flex;
+  gap: 0.75rem;
+  font-size: clamp(1.4rem, 2vw, 1.95rem);
+  line-height: 1.12;
+}
+.tp-qa__star {
+  flex: none;
+  width: 1.15rem;
+  margin-top: 0.3rem;
+  color: var(--color-honey);
+}
+.tp-qa__a {
+  max-width: 58ch;
+  margin-top: 0.7rem;
+  padding-left: 1.9rem;
+  color: var(--ink-soft);
+}
+/* Phones: the puzzled Teddy and his "?" sit out (lane mode, pup.css) */
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference),
+  (pointer: coarse) and (max-height: 519px) and (prefers-reduced-motion: no-preference) {
+  .tp-night__pup {
+    display: none;
+  }
+}
+@media (min-width: 1024px) {
+  .tp-night__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+    column-gap: clamp(3rem, 7vw, 8rem);
+  }
+}

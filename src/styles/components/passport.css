@@ -1,0 +1,216 @@
+/* Scene 5 · passport: an open book of stamps, then the city horizon at sunset (docs/PLAN.md §5). */
+
+.tp-passport {
+  padding-top: clamp(4rem, 9vh, 6.5rem);
+}
+
+/* ── Book: stacked pages on phones, a spread from 900px ── */
+.tp-book {
+  position: relative;
+  display: grid;
+  max-width: 72rem;
+  margin: 0 0.6rem clamp(3.5rem, 8vh, 6rem);
+  filter: drop-shadow(10px 14px #2a170e2e);
+  rotate: -0.35deg;
+}
+/* The leather cover peeking out round the pages */
+.tp-book::before {
+  content: "";
+  position: absolute;
+  inset: -0.85rem -0.95rem;
+  z-index: -1;
+  border: 3px solid var(--color-cocoa);
+  border-radius: 1.7rem;
+  background: radial-gradient(circle at 30% 20%, #ffffff1f, transparent 60%), var(--color-toffee-deep);
+}
+/* Passport paper: interlocking guilloché rings */
+.tp-book__page {
+  position: relative;
+  padding: clamp(1.6rem, 4vw, 3.2rem);
+  border: 3px solid var(--color-cocoa);
+  background:
+    radial-gradient(circle at 0 0, #0000 0 17px, #c2622b14 17px 18.5px, #0000 18.5px) 0 0 / 36px 36px,
+    radial-gradient(circle at 18px 18px, #0000 0 17px, #c2622b0f 17px 18.5px, #0000 18.5px) 0 0 / 36px 36px,
+    #fff8ea;
+  color: var(--color-cocoa);
+}
+.tp-book__page--left {
+  padding-bottom: clamp(9rem, 22vw, 11rem);
+  border-bottom-width: 1.5px;
+  border-radius: 1.1rem 1.1rem 0 0;
+}
+.tp-book__page--right {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  align-content: center;
+  gap: 2rem 1.5rem;
+  border-top-width: 1.5px;
+  border-radius: 0 0 1.1rem 1.1rem;
+}
+.tp-book__kicker {
+  color: var(--color-toffee-ink);
+  font-size: 1.15rem;
+}
+.tp-book__title {
+  max-width: 12ch;
+  margin-top: 0.4rem;
+  font-size: clamp(2.2rem, 4.2vw, 3.9rem);
+}
+.tp-book__teddy {
+  position: absolute;
+  right: clamp(0.5rem, 4vw, 2rem);
+  bottom: -0.4rem;
+  width: clamp(8.5rem, 26vw, 11rem);
+}
+/* Phones: no Teddy on the page (lane mode, pup.css), so no room kept for him */
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference),
+  (pointer: coarse) and (max-height: 519px) and (prefers-reduced-motion: no-preference) {
+  .tp-book__page--left {
+    padding-bottom: clamp(1.6rem, 4vw, 3.2rem);
+  }
+}
+@media (min-width: 900px) {
+  .tp-book {
+    grid-template-columns: 1fr 1.3fr;
+    margin-inline: auto;
+    rotate: -1.2deg;
+  }
+  .tp-book__page--left {
+    padding-bottom: clamp(1.6rem, 4vw, 3.2rem);
+    border-right-width: 1.5px;
+    border-bottom-width: 3px;
+    border-radius: 1.1rem 0 0 1.1rem;
+    box-shadow: inset -26px 0 30px -24px #2a170e59;
+  }
+  .tp-book__page--right {
+    grid-template-columns: 1fr 1fr;
+    border-top-width: 3px;
+    border-left-width: 1.5px;
+    border-radius: 0 1.1rem 1.1rem 0;
+    box-shadow: inset 26px 0 30px -24px #2a170e4d;
+  }
+  .tp-book__teddy {
+    right: -1.5rem;
+    bottom: 0.5rem;
+    width: clamp(10rem, 13vw, 12.5rem);
+  }
+}
+
+/* ── Stamps: rubber-stamp ink with a noise mask for the patchy print ── */
+.tp-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.tp-stamp {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: clamp(8.5rem, 12vw, 10.5rem);
+  aspect-ratio: 1;
+  padding: 0.8rem;
+  border: 3px solid;
+  color: var(--ink-stamp);
+  opacity: 0.9;
+  mix-blend-mode: multiply;
+  rotate: var(--tilt);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.4 2.15'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+    0 0 / 160px 160px;
+}
+.tp-stamp::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1.5px dashed;
+  border-radius: inherit;
+}
+.tp-stamp--round,
+.tp-stamp--scallop {
+  border-radius: 50%;
+}
+.tp-stamp--ticket {
+  aspect-ratio: 1.3;
+  border-radius: 0.7rem;
+}
+.tp-stamp--oval {
+  aspect-ratio: 1.35;
+  border-radius: 50%;
+}
+.tp-stamp--scallop {
+  border-style: dotted;
+  border-width: 5px;
+}
+.tp-stamp__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.tp-stamp__title {
+  max-width: 10ch;
+  font-size: 1.08rem;
+  line-height: 1.05;
+}
+.tp-entry__text {
+  max-width: 26ch;
+  margin-top: 0.85rem;
+  color: var(--color-cocoa-soft);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+/* From the un-inked state (first frame) to the stamped one (the static default) */
+@keyframes tp-stamp-in {
+  0% {
+    opacity: 0;
+    scale: 1.7;
+    rotate: calc(var(--tilt) - 16deg);
+  }
+  55% {
+    opacity: 0.95;
+    scale: 0.93;
+  }
+  75% {
+    scale: 1.03;
+  }
+  100% {
+    opacity: 0.9;
+    scale: 1;
+    rotate: var(--tilt);
+  }
+}
+
+/* ── Horizon: the city at sunset ── */
+.tp-horizon {
+  position: relative;
+  height: clamp(5rem, 12vw, 10rem);
+  margin-top: -1px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.tp-horizon__sun {
+  position: absolute;
+  bottom: 18%;
+  left: 62%;
+  width: clamp(7rem, 16vw, 13rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #ffd27f 0 70%, #ffd27f73 73%, #0000 100%);
+}
+/* Scroll-driven in P6a: the sun sinks behind the skyline */
+@keyframes tp-sun-set {
+  from {
+    translate: 0 -60%;
+  }
+  to {
+    translate: 0 40%;
+  }
+}
+.tp-horizon__city {
+  position: absolute;
+  inset: auto 0 0;
+  width: 100%;
+  height: 100%;
+  fill: var(--sky-bottom);
+}

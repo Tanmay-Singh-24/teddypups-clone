@@ -1,0 +1,193 @@
+/* Scene 8 · home: the house with Max waiting behind the open door (docs/PLAN.md §5). */
+
+.tp-home {
+  padding-top: clamp(4.5rem, 10vh, 7rem);
+  text-align: center;
+}
+.tp-home__copy h2 {
+  max-width: 15ch;
+  margin-inline: auto;
+}
+.tp-home__lede {
+  max-width: 52ch;
+  margin: 1.2rem auto 0;
+  color: var(--ink-soft);
+  font-size: clamp(1.05rem, 1.3vw, 1.3rem);
+  line-height: 1.55;
+}
+.tp-home__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  padding-block: clamp(2rem, 4vh, 2.75rem) clamp(5rem, 11vh, 8rem);
+}
+
+/* The facade is drawn in CSS: plank wall (::before) on a dark step (::after) */
+.tp-house {
+  position: relative;
+  width: min(100%, 44rem);
+  height: clamp(21rem, 46vh, 29rem);
+  margin: clamp(2.5rem, 6vh, 4rem) auto 0;
+}
+.tp-house::before {
+  content: "";
+  position: absolute;
+  inset: 0 6% 2.2rem;
+  border: 3px solid var(--color-cocoa);
+  border-bottom: 0;
+  border-radius: 1.4rem 1.4rem 0 0;
+  background:
+    repeating-linear-gradient(0deg, #0000 0 30px, #00000024 30px 32px),
+    linear-gradient(#5c3622, #4a2a19);
+}
+.tp-house::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 2.4rem;
+  border: 3px solid var(--color-cocoa);
+  border-radius: 0.6rem 0.6rem 0 0;
+  background: #3a2114;
+}
+.tp-house__doorway {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  z-index: 1;
+  width: clamp(8.5rem, 15vw, 11.5rem);
+  aspect-ratio: 1 / 1.62;
+  border: 3px solid var(--color-cocoa);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  box-shadow:
+    0 0 0 7px #b2733f,
+    0 0 0 10px var(--color-cocoa),
+    0 0 60px 18px #ffcd7859;
+  translate: -50%;
+  perspective: 1000px;
+}
+.tp-house__inside {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 70%, #ffe4a8, #e9a95a);
+}
+/* Open by default (the static end state); swung on its left hinge */
+.tp-house__door {
+  position: absolute;
+  inset: -3px -3px 0;
+  border: 3px solid var(--color-cocoa);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(50% - 1.5px),
+      #2a170e59 calc(50% - 1.5px) calc(50% + 1.5px),
+      transparent calc(50% + 1.5px)
+    ),
+    var(--color-toffee-deep);
+  transform: rotateY(-102deg);
+  transform-origin: 0;
+}
+@keyframes tp-house-open {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(-102deg);
+  }
+}
+/* With the pup actor running, the door waits shut until Teddy arrives home */
+html[data-pup] .tp-house__door {
+  transform: rotateY(0);
+  transition: transform 1.2s cubic-bezier(0.3, 1.25, 0.5, 1) 0.3s;
+  animation: none;
+}
+html[data-pup] .tp-home[data-visited="true"] .tp-house__door {
+  transform: rotateY(-102deg);
+}
+.tp-house__peep {
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  width: 34%;
+  aspect-ratio: 1;
+  border: 3px solid var(--color-cocoa);
+  border-radius: 50%;
+  background: #ffd98f;
+  translate: -50%;
+}
+.tp-house__knob {
+  position: absolute;
+  top: 58%;
+  right: 12%;
+  width: 0.9rem;
+  aspect-ratio: 1;
+  border: 2.5px solid var(--color-cocoa);
+  border-radius: 50%;
+  background: var(--color-honey);
+}
+.tp-house__lamp {
+  position: absolute;
+  bottom: calc(2.2rem + clamp(8.5rem, 15vw, 11.5rem));
+  left: calc(50% + clamp(6.5rem, 11vw, 8.5rem));
+  width: 1.9rem;
+  height: 2.6rem;
+  border: 3px solid var(--color-cocoa);
+  border-radius: 0.5rem 0.5rem 1rem 1rem;
+  background: #ffd27f;
+  box-shadow: 0 0 46px 22px #ffcd6e66;
+}
+/* Potted plant: three leaf blobs over a toffee pot, cut to a pot silhouette */
+.tp-house__plant {
+  position: absolute;
+  bottom: 2.2rem;
+  width: clamp(3.4rem, 6vw, 4.6rem);
+  aspect-ratio: 1 / 1.5;
+  background:
+    radial-gradient(ellipse 34% 30% at 30% 30%, #5f8f4a 96%, transparent 100%),
+    radial-gradient(ellipse 34% 30% at 70% 26%, #6fa356 96%, transparent 100%),
+    radial-gradient(ellipse 30% 34% at 50% 14%, #7bb060 96%, transparent 100%),
+    linear-gradient(transparent 52%, var(--color-toffee) 52%);
+  clip-path: polygon(0 0, 100% 0, 100% 52%, 88% 100%, 12% 100%, 0 52%);
+}
+.tp-house__plant--left {
+  left: calc(50% - clamp(9.5rem, 16vw, 12.5rem));
+}
+.tp-house__plant--right {
+  right: calc(50% - clamp(9.5rem, 16vw, 12.5rem));
+}
+.tp-house__mat {
+  position: absolute;
+  bottom: 0.25rem;
+  left: 50%;
+  z-index: 1;
+  width: clamp(10rem, 16vw, 13rem);
+  height: 1.9rem;
+  border: 3px solid var(--color-cocoa);
+  border-radius: 0.45rem;
+  background: repeating-linear-gradient(90deg, var(--color-honey) 0 0.6rem, #e7a957 0.6rem 1.2rem);
+  color: var(--color-cocoa);
+  font-size: 0.95rem;
+  line-height: 1.55rem;
+  translate: -50%;
+}
+.tp-house__teddy {
+  position: absolute;
+  bottom: 0.4rem;
+  left: calc(50% - clamp(15rem, 24vw, 19rem));
+  z-index: 1;
+  width: clamp(8.5rem, 13vw, 11.5rem);
+}
+@media (max-width: 639px) {
+  .tp-house__teddy {
+    left: 0;
+    width: 7.25rem;
+  }
+  .tp-house__plant--left {
+    display: none;
+  }
+}

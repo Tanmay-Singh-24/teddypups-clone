@@ -1,5 +1,10 @@
+import { Dusk } from "@/components/home/Dusk";
 import { Hero } from "@/components/home/Hero";
+import { HomeHouse } from "@/components/home/HomeHouse";
+import { JourneyChat } from "@/components/home/JourneyChat";
 import { MeetHall } from "@/components/home/MeetHall";
+import { Night } from "@/components/home/Night";
+import { Passport } from "@/components/home/Passport";
 import { Paths } from "@/components/home/Paths";
 import { ABOUT, ADDRESS, EMAIL, PHONE, SITE_NAME, SITE_URL, SOCIALS } from "@/content/site";
 
@@ -25,6 +30,11 @@ export default function Home() {
       <Hero />
       <MeetHall />
       <Paths />
+      <JourneyChat />
+      <Passport />
+      <Dusk />
+      <Night />
+      <HomeHouse />
     </div>
   );
 }
