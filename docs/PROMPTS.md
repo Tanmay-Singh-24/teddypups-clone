@@ -165,6 +165,10 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§8.1, §8.4 and §9 P6a). Ad
 
 **Follow-ups:**
 
+> star with 6a
+
+*(interrupted before any work; resent as:)*
+
 > start with 6a
 
 **Output** *(20:40 IST)*: `RevealScope` arms and plays every entrance animation on the inner pages and the dusk wall; the hero lineup swaps puppies in and out of the arches with name tags; the Meet hallway pins at ≥1024px and slides past Teddy with doors opening; the journey chat replays step by step on desktop; doors, stamps, the sunset and the house door are scroll-driven where `animation-timeline` exists; paw cursor. Header hide/show, Lenis, night and footer idles and every hover/focus/active state already existed from P2–P5 (all 40 of the reference's interaction selectors are present). Compared live with the reference at 1440 and 375: section heights, hallway track position, open doors, floor offset, chat steps and stamp/sun frames are identical. Commits `2a0ecbf`, `509d9fc`, `e074549`, `27a9900`, `aa3d0da`, `b5f11b1`; handover updated. Not pushed.
@@ -206,7 +210,7 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§11 and §9 P7). Add Playwri
 
 *(21:25 IST)* Answered: the site is complete and live (P0–P7); P8 remains (README, Loom checklist, submission email). Logged the Safari check in the handover.
 
-### P8: ship · sent: ☐ ____
+### P8: ship · sent: ☑ Sun 1 Nov 2026, 21:25 IST (Claude Code, Opus, same session as P5–P7; sent as "Start P8")
 
 ```text
 Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§12 and §13). Confirm the production deployment on Vercel is green and click through every route, a filter, a gallery, the FAQ search and both forms on the live URL in the browser. Write README.md as §13 describes (live URL, screenshots, stack, structure, how to run, how it was built, decisions and challenges, testing, deployment, AI usage linking docs/PROMPTS.md, credits/disclaimer). Make sure docs/PROMPTS.md has every prompt I sent. Then give me a short checklist for recording the Loom following §13's outline, with the files and URLs to have open, and draft the submission email with the exact subject line.
