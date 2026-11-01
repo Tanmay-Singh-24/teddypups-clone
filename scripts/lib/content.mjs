@@ -14,6 +14,6 @@ export function mediaUrlsInContent() {
     else if (node && typeof node === "object") Object.values(node).forEach(walk);
     else if (typeof node === "string" && node.startsWith("/media/")) urls.add(node);
   };
-  ["puppies.json", "families.json"].forEach((f) => walk(loadData(f)));
+  ["puppies.json", "families.json", "home.json"].forEach((f) => walk(loadData(f)));
   return [...urls];
 }

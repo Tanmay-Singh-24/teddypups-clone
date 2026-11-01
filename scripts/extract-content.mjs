@@ -102,7 +102,10 @@ const goneStrip = parsePage("puppies")
 
 // ── Families (two orderings of the same 64 photos) and FAQs ────────────────────────
 const familiesWall = jsonAfterKey(flight(readPage("happy-families")), "photos");
-const homeWall = jsonAfterKey(flight(readPage("home")), "photos");
+const homeFlight = flight(readPage("home"));
+const homeWall = jsonAfterKey(homeFlight, "photos");
+// The showroom photos and clip shared by the paths window and the journey phone (4 photos + 1 video).
+const showroom = jsonAfterKey(homeFlight, "media", homeFlight.indexOf('"key":"journey"'));
 const faqs = jsonAfterKey(flight(readPage("faq")), "faqs").map(({ id, question, answer }) => ({ id, question, answer }));
 
 // ── Write ─────────────────────────────────────────────────────────────────────────
@@ -114,8 +117,10 @@ const write = (file, data) => {
 write("puppies.json", { available, goneHome, goneStrip, breeds });
 write("families.json", { wall: familiesWall, homeWall });
 write("faq.json", faqs);
+write("home.json", { showroom });
 
 console.log(
   `\n${available.length} available · ${goneHome.length} gone home · ${goneStrip.length} in strip · ` +
-    `${breeds.length} breeds · ${familiesWall.length}/${homeWall.length} family photos · ${faqs.length} FAQs`,
+    `${breeds.length} breeds · ${familiesWall.length}/${homeWall.length} family photos · ${faqs.length} FAQs · ` +
+    `${showroom.length} showroom media`,
 );

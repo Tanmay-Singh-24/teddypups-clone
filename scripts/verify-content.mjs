@@ -25,6 +25,7 @@ const expectEqual = (actual, expected, what) =>
 const { available, goneHome, goneStrip } = loadData("puppies.json");
 const { wall, homeWall } = loadData("families.json");
 const faqs = loadData("faq.json");
+const { showroom } = loadData("home.json");
 
 // Counts
 expectEqual(available.length, 15, "available puppies");
@@ -33,6 +34,7 @@ expectEqual(goneStrip.length, 5, "gone-home strip");
 expectEqual(wall.length, 64, "family photos (wall)");
 expectEqual(homeWall.length, 64, "family photos (home)");
 expectEqual(faqs.length, 9, "FAQs");
+expectEqual(showroom.map((m) => m.kind).join(","), "image,image,image,image,video", "homepage showroom media");
 
 // Media on disk
 const media = mediaUrlsInContent();
