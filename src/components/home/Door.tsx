@@ -19,7 +19,7 @@ type DoorProps = { pup: Puppy; index: number; sizes: string };
 
 /**
  * An arched door with the puppy waiting in the room behind it. The server renders it open
- * (data-open on the <li>); the pinned hallway (P6a) closes doors and swings each open as it reaches Teddy.
+ * (data-open on the <li>); the pinned hallway closes doors and swings each open as it reaches Teddy.
  */
 export function DoorLink({ pup, index, sizes }: DoorProps) {
   return (
