@@ -101,13 +101,21 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§2.4, §6.8 and §9 P2). Bui
 
 *(02:43 IST)* Updated `docs/HANDOVER.md` for P2, pointed the P3–P8 prompts at it, pushed `main`.
 
-### P3: homepage, static layout · sent: ☐ ____
+### P3: homepage, static layout · sent: ☑ Sun 1 Nov 2026, 03:00 IST (Claude Code, Opus, fresh session)
 
 ```text
 Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§5 and §9 P3). Build the 8 homepage scenes (hero → home) with the exact copy, artwork, sky gradients and quilt bands, fully responsive at 375/768/1024/1440 — without the scroll choreography yet (that's P6), but with every hook P6 needs: the .pup-stop anchors with their pose data and static buddy mascots, doors/stamps/house in their initial and final states, the sticky stage markup for the Meet hallway. On mobile the Meet section is the 2-column grid of open doors. Match the section heights in §5 within about 10%. Check every scene side by side with the live reference and docs/reference/screens/, then commit (one commit per scene or two is fine).
 ```
 
 **Follow-ups:**
+
+*(03:05 IST)* The session paused at the usage limit after reading the reference; notes were left in the shared side-session notes folder.
+
+> start
+
+*(11:36 IST)* Resumed the build.
+
+**Output** *(11:54 IST)*: the 8 homepage scenes in `src/components/home/` with their component CSS, the showroom media extracted into `src/content/data/home.json`, and every P6 hook (pup stops, door/stamp/house states, the Meet sticky stage and its `data-pinned` layout). Section heights and component boxes measured equal to the live site at 375/768/1024/1440; the only difference is the Meet section at ≥1024px, which the reference pins with JS (P6a). Commits `f0d6314`, `1c8fbe7`, `08e6f23`; handover updated.
 
 ### P4: puppies pages · sent: ☐ ____
 
