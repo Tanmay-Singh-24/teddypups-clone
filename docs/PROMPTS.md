@@ -238,3 +238,7 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§12 and §13). Confirm the p
 > aeroplane does a motion animation while scrolling in the official website fix that
 
 **Output** *(22:26 IST)*: the plane now flies the dotted Korea → Dubai route as its drawing scrolls through the viewport (Motion `useScroll`, offset `start 95%` → `end 25%`), turning with the curve and fading in after 11% of the way, as the reference does; reduced motion parks it at 62%. Checked against the live site on the homepage and /how-it-works at 1440: position, angle and opacity identical at six scroll points. The skyline path moved to its own module so server pages can keep importing it. Not pushed.
+
+> Push to main
+
+*(22:27 IST)* Pushed `main`; Vercel deploys it.
