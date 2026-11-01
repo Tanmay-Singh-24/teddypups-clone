@@ -41,6 +41,12 @@ export const FOOTER_NAV = [
   { label: "Visit & contact", href: "/contact" },
 ] as const;
 
+/** Both forms' success copy. */
+export const ENQUIRY_SUCCESS = {
+  heading: "Message received!",
+  body: "Thank you — our team will get back to you promptly. For the quickest reply, message us on WhatsApp.",
+} as const;
+
 export const TESTIMONIAL = {
   quote:
     "TeddyPups truly made our dream a reality. They supported us at every step of the import journey. Our Maltipoo arrived healthy, cheerful, and absolutely perfect. Having 24/7 support throughout the process gave us complete peace of mind.",

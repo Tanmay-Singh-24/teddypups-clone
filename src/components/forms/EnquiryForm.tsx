@@ -1,9 +1,8 @@
 "use client";
 
+import { motion } from "motion/react";
 import { useId, type InputHTMLAttributes } from "react";
-
-/** Per-field messages and a form-level message, as the enquiry action will return them (P5). */
-export type EnquiryErrors = Partial<Record<"name" | "phone" | "email" | "area" | "message", string>>;
+import { useEnquiry } from "./useEnquiry";
 
 type FieldProps = InputHTMLAttributes<HTMLInputElement> & { label: string; name: string; error?: string; hint?: string };
 
@@ -44,25 +43,47 @@ function Field({ label, name, error, hint, ...input }: FieldProps) {
 type EnquiryFormProps = {
   /** The puppy being asked about: posts its id and prefills the message. */
   puppy?: { id: string; label: string };
-  /** The contact letter's puppy select instead (P5). */
+  /** A puppy select instead. */
   puppies?: { id: string; label: string }[];
-  /** Stacks the four fields (contact letter). */
+  /** Stacks the four fields. */
   compact?: boolean;
-  errors?: EnquiryErrors;
-  message?: string;
-  pending?: boolean;
+  success: { heading: string; body: string };
+  whatsappHref: string;
 };
 
 /**
- * The enquiry fields shared by puppy profiles and the contact letter. P4 renders the form only;
- * P5 wires it to the server action. Until then a submit does nothing (it must never fall back to a
- * GET that would put personal details in the URL).
+ * The puppy enquiry form, posted to the shared enquiry action. On success it flips into the
+ * "Message received!" envelope card. method="post" keeps details out of the URL even before hydration.
  */
-export function EnquiryForm({ puppy, puppies, compact = false, errors, message, pending = false }: EnquiryFormProps) {
+export function EnquiryForm({ puppy, puppies, compact = false, success, whatsappHref }: EnquiryFormProps) {
+  const { state, pending, onSubmit, ref } = useEnquiry();
   const selectId = useId();
   const messageId = useId();
+  const errors = state.errors;
+  const message = state.message;
+  if (state.ok)
+    return (
+      <motion.div
+        role="status"
+        initial={{ rotateX: -80, opacity: 0, y: -10 }}
+        animate={{ rotateX: 0, opacity: 1, y: 0 }}
+        transition={{ type: "spring", stiffness: 160, damping: 16 }}
+        className="tp-sent rounded-[2rem] border-[3px] border-cocoa bg-honey p-8 text-center"
+      >
+        <svg viewBox="0 0 120 84" className="tp-envelope mx-auto w-32" aria-hidden="true">
+          <path d="M6 10h108v68H6z" fill="#fffdf8" stroke="#2a170e" strokeWidth="3" strokeLinejoin="round" />
+          <path d="M6 10l54 40 54-40" fill="none" stroke="#2a170e" strokeWidth="3" strokeLinejoin="round" />
+          <circle cx="94" cy="62" r="12" fill="#c2622b" stroke="#2a170e" strokeWidth="2.5" />
+        </svg>
+        <p className="font-plush mt-4 text-[2rem]">{success.heading}</p>
+        <p className="mx-auto mt-2 max-w-[38ch] text-cocoa-soft">{success.body}</p>
+        <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp mt-6">
+          WhatsApp us
+        </a>
+      </motion.div>
+    );
   return (
-    <form onSubmit={(e) => e.preventDefault()} noValidate className="space-y-5">
+    <form ref={ref} method="post" onSubmit={onSubmit} noValidate className="space-y-5">
       {message && (
         <p role="alert" className="rounded-2xl bg-blush px-4 py-3 font-semibold">
           {message}

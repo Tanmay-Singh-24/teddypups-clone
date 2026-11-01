@@ -9,7 +9,7 @@ import { PuppyGallery } from "@/components/puppies/PuppyGallery";
 import { StoryRibbon } from "@/components/puppies/StoryRibbon";
 import { Photo } from "@/components/ui/Photo";
 import { allPuppies, getNeighbours, getPuppy } from "@/content/puppies";
-import { SITE_URL } from "@/content/site";
+import { ENQUIRY_SUCCESS, SITE_URL } from "@/content/site";
 import type { Puppy } from "@/content/types";
 import { puppyDescription, puppyFormLabel, puppyTitle } from "@/lib/puppy-text";
 import { puppyWaLink } from "@/lib/whatsapp";
@@ -237,7 +237,11 @@ export default async function PuppyPage({ params }: PageProps<"/puppies/[slug]">
               </p>
             </div>
             <div className="lg:col-span-7 lg:col-start-6">
-              <EnquiryForm puppy={{ id: puppy.id, label: puppyFormLabel(puppy) }} />
+              <EnquiryForm
+                puppy={{ id: puppy.id, label: puppyFormLabel(puppy) }}
+                success={ENQUIRY_SUCCESS}
+                whatsappHref={puppyWaLink(puppy)}
+              />
             </div>
           </section>
           <nav aria-label="More puppies" className="mt-16 grid gap-4 sm:grid-cols-2">

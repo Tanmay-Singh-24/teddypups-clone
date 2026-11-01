@@ -1,6 +1,6 @@
 /* Shared paper surfaces: the board, the dotted paper card, numbered trails and the letter. Layered as
    components (as in the reference), so utilities on the same element win. Puppy profiles use all four;
-   /how-it-works and /contact reuse them in P5. */
+   /how-it-works and /contact reuse them, and /contact adds the shopfront. */
 
 @layer components {
   .tp-board {
@@ -102,5 +102,22 @@
     background: var(--color-honey-soft);
     color: var(--color-toffee-deep);
     rotate: 6deg;
+  }
+
+  /* /contact: the striped-awning shopfront card. */
+  .tp-shopfront {
+    position: relative;
+    overflow: hidden;
+    border: 3px solid var(--color-cocoa);
+    border-radius: 1.2rem;
+    background: linear-gradient(#fff1d8, #fbe3b4);
+    color: var(--color-cocoa);
+  }
+  .tp-shopfront::before {
+    content: "";
+    display: block;
+    height: 1.9rem;
+    border-bottom: 3px solid var(--color-cocoa);
+    background: repeating-linear-gradient(90deg, var(--color-toffee) 0 1.4rem, var(--color-milk) 1.4rem 2.8rem);
   }
 }

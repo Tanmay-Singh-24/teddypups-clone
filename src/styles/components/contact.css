@@ -1,0 +1,276 @@
+/* /contact: the fill-in-the-blanks letter and the post box it goes into. .tp-post[data-phase] runs
+   writing → sealing (the letter folds, the envelope closes) → posting (the box rises, the envelope
+   drops in, the flag goes up) → sent. Reduced motion skips straight to sent. */
+
+.tp-post {
+  position: relative;
+}
+.tp-post[data-phase="sealing"],
+.tp-post[data-phase="posting"] {
+  overflow: clip;
+}
+
+.tp-letterform {
+  --pad: clamp(1.5rem, 4vw, 2.75rem);
+  position: relative;
+  padding: var(--pad);
+  border: 3px solid var(--color-cocoa);
+  border-radius: 1.6rem;
+  /* The margin rule down the left edge. */
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0 calc(var(--pad) - 0.9rem),
+      #c2622b47 calc(var(--pad) - 0.9rem) calc(var(--pad) - 0.75rem),
+      transparent 0
+    ),
+    var(--color-milk);
+  color: var(--color-cocoa);
+  box-shadow: 8px 10px #2a170e29;
+  transform-origin: 50% 0;
+}
+.tp-letterform__greeting {
+  color: var(--color-toffee-ink);
+  font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+}
+.tp-letterform__line {
+  margin-top: 0.9rem;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 2.55;
+}
+
+.tp-blank {
+  display: inline-block;
+  width: min(var(--size), 100%);
+  vertical-align: baseline;
+}
+.tp-blank :is(input, select) {
+  width: 100%;
+  height: 2.2rem;
+  padding: 0 0.25rem;
+  border: 0;
+  border-bottom: 2.5px dashed #2a170e73;
+  border-radius: 0.3rem 0.3rem 0 0;
+  background: none;
+  color: var(--color-toffee-ink);
+  font-family: var(--font-hand);
+  font-size: 1.12rem;
+  outline: none;
+  transition:
+    background-color 0.25s,
+    border-color 0.25s;
+}
+.tp-blank--select {
+  width: min(20ch, 100%);
+}
+.tp-blank select {
+  padding-right: 1.4rem;
+  appearance: none;
+  background:
+    linear-gradient(45deg, transparent 50%, var(--color-toffee-deep) 50%) right 0.55rem center / 0.45rem 0.45rem no-repeat,
+    linear-gradient(-45deg, transparent 50%, var(--color-toffee-deep) 50%) right 0.2rem center / 0.45rem 0.45rem no-repeat;
+  text-overflow: ellipsis;
+}
+.tp-blank :is(input, select)::placeholder {
+  color: #5a3a2880;
+}
+.tp-blank :is(input, select):focus-visible {
+  border-bottom-style: solid;
+  border-bottom-color: var(--color-toffee-deep);
+  background-color: #fbe3b499;
+}
+.tp-blank :is(input, select)[aria-invalid="true"] {
+  border-bottom: 2.5px solid #b3261e;
+  background-color: #f9cdbf73;
+}
+
+.tp-letterform__note {
+  display: block;
+  width: 100%;
+  margin-top: 1.1rem;
+  padding: 0 0.25rem;
+  border: 0;
+  background: repeating-linear-gradient(#0000 0 calc(2.3rem - 2px), #2a170e29 calc(2.3rem - 2px) 2.3rem) local;
+  color: var(--color-toffee-ink);
+  font-family: var(--font-hand);
+  font-size: 1.1rem;
+  line-height: 2.3rem;
+  outline: none;
+  resize: vertical;
+}
+.tp-letterform__note:focus-visible {
+  border-radius: 0.4rem;
+  background-color: #fbe3b459;
+}
+.tp-letterform__alert {
+  margin-top: 1rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 1rem;
+  background: var(--color-blush);
+}
+.tp-letterform__alert ul {
+  margin-top: 0.35rem;
+  padding-left: 1.1rem;
+  font-size: 0.95rem;
+  list-style: outside;
+}
+.tp-letterform__sign {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin-top: 1.6rem;
+}
+.tp-letterform__sign p {
+  color: var(--color-cocoa-soft);
+  font-size: 1.1rem;
+}
+
+/* ── Posting ── */
+.tp-post[data-phase="sealing"] .tp-letterform,
+.tp-post[data-phase="posting"] .tp-letterform {
+  animation: tp-letter-fold 0.65s var(--ease-snap) forwards;
+}
+@keyframes tp-letter-fold {
+  55% {
+    opacity: 0.7;
+    transform: perspective(1100px) rotateX(62deg) scale(0.8);
+  }
+  to {
+    opacity: 0;
+    transform: perspective(1100px) rotateX(80deg) scale(0.35) translateY(30%);
+  }
+}
+.tp-post__scene {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  width: 14rem;
+  height: 26rem;
+  pointer-events: none;
+  translate: -50%;
+}
+.tp-post__envelope {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 1;
+  width: 11rem;
+  translate: -50%;
+  animation: tp-env-in 0.45s 0.3s var(--ease-pounce) both;
+}
+@keyframes tp-env-in {
+  0% {
+    opacity: 0;
+    scale: 0.4;
+  }
+}
+.tp-post__flap {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: tp-flap 0.3s ease-in 0.55s both;
+}
+@keyframes tp-flap {
+  0% {
+    transform: scaleY(-1);
+  }
+}
+.tp-post[data-phase="posting"] .tp-post__envelope {
+  animation: tp-env-post 0.85s var(--ease-snap) forwards;
+}
+@keyframes tp-env-post {
+  0% {
+    translate: -50%;
+    scale: 1;
+  }
+  35% {
+    translate: -50% -1.2rem;
+    scale: 0.92;
+  }
+  to {
+    translate: -50% 12.5rem;
+    scale: 0.55;
+  }
+}
+.tp-post__box {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 2;
+  width: 13rem;
+  translate: -50% 120%;
+}
+.tp-post[data-phase="posting"] .tp-post__box {
+  animation: tp-box-up 0.5s var(--ease-pounce) forwards;
+}
+@keyframes tp-box-up {
+  to {
+    translate: -50%;
+  }
+}
+.tp-post__flag {
+  transform-box: fill-box;
+  transform-origin: 0 100%;
+  rotate: 90deg;
+}
+.tp-post[data-phase="posting"] .tp-post__flag {
+  animation: tp-flag 0.4s 0.75s var(--ease-pounce) forwards;
+}
+@keyframes tp-flag {
+  to {
+    rotate: 0deg;
+  }
+}
+.tp-post__sent {
+  padding: clamp(2rem, 5vw, 3rem) 1.5rem;
+  border: 3px solid var(--color-cocoa);
+  border-radius: 1.6rem;
+  background: var(--color-honey);
+  color: var(--color-cocoa);
+  text-align: center;
+  outline: none;
+  animation: tp-sent-in 0.55s var(--ease-pounce) both;
+}
+.tp-post__box--sent {
+  position: static;
+  width: 9rem;
+  margin-inline: auto;
+  translate: none;
+}
+@keyframes tp-sent-in {
+  0% {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.96);
+  }
+}
+
+/* ── Visit card ── */
+.tp-visit {
+  display: grid;
+  gap: 1.25rem;
+}
+.tp-visit__photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 3px solid var(--color-cocoa);
+  border-radius: 999px 999px 1rem 1rem;
+  background: var(--color-honey-soft);
+}
+@media (min-width: 640px) {
+  .tp-visit {
+    grid-template-columns: minmax(0, 1fr) 11rem;
+    align-items: end;
+  }
+  .tp-visit__photo {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tp-post *,
+  .tp-post__sent {
+    animation: none !important;
+  }
+}
