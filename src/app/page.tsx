@@ -6,6 +6,7 @@ import { MeetHall } from "@/components/home/MeetHall";
 import { Night } from "@/components/home/Night";
 import { Passport } from "@/components/home/Passport";
 import { Paths } from "@/components/home/Paths";
+import { PupDirector } from "@/components/pup/PupDirector";
 import { ABOUT, ADDRESS, EMAIL, PHONE, SITE_NAME, SITE_URL, SOCIALS } from "@/content/site";
 
 const petStore = {
@@ -25,16 +26,19 @@ const petStore = {
 /** The homepage: one scroll story from sunrise to night in eight scenes (docs/PLAN.md §5). */
 export default function Home() {
   return (
-    <div data-page="home" className="tp-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(petStore) }} />
-      <Hero />
-      <MeetHall />
-      <Paths />
-      <JourneyChat />
-      <Passport />
-      <Dusk />
-      <Night />
-      <HomeHouse />
-    </div>
+    <>
+      <div data-page="home" className="tp-page">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(petStore) }} />
+        <Hero />
+        <MeetHall />
+        <Paths />
+        <JourneyChat />
+        <Passport />
+        <Dusk />
+        <Night />
+        <HomeHouse />
+      </div>
+      <PupDirector />
+    </>
   );
 }

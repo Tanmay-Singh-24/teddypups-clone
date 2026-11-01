@@ -32,6 +32,84 @@ html[data-pup] .pup-stop > .pup-buddy {
   pointer-events: none !important;
 }
 
+/* ── The live actor (homepage) ── */
+.pup-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  overflow: clip;
+  pointer-events: none;
+  contain: layout paint style;
+}
+/* Behind the scene art while he hops in or out of a hiding place */
+.pup-layer[data-front="false"] {
+  z-index: 15;
+}
+/* Phones: pinned to the large viewport bottom so the bar's movement doesn't shake him */
+.pup-layer[data-anchor="bottom"] {
+  top: auto;
+  height: 100lvh;
+}
+/* A fixed 100svh probe: the stable viewport height to measure against */
+.pup-probe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100svh;
+  visibility: hidden;
+  pointer-events: none;
+}
+.pup-actor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+.pup-actor__body {
+  width: 300px;
+  transform-origin: 0 0;
+}
+.pup-actor__body > svg {
+  display: block;
+  width: 300px;
+  height: 240px;
+}
+.pup-actor .pup-actor__body > svg :is(path, ellipse, circle) {
+  pointer-events: visiblePainted;
+  cursor: pointer;
+}
+.pup-bubble-at {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.pup-heart {
+  position: absolute;
+  color: var(--color-toffee);
+  font-size: 1.35rem;
+  line-height: 1;
+  text-shadow: 0 1px 0 var(--color-milk);
+  pointer-events: none;
+}
+/* Paw prints, stamped in page coordinates inside <main> */
+.pup-prints {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  overflow: clip;
+  pointer-events: none;
+}
+.pup-prints > svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  fill: var(--color-toffee);
+  opacity: 0;
+}
+
 .pup-bubble {
   position: absolute;
   bottom: 0;
