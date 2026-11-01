@@ -117,6 +117,10 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§5 and §9 P3). Build the 8 
 
 **Output** *(11:54 IST)*: the 8 homepage scenes in `src/components/home/` with their component CSS, the showroom media extracted into `src/content/data/home.json`, and every P6 hook (pup stops, door/stamp/house states, the Meet sticky stage and its `data-pinned` layout). Section heights and component boxes measured equal to the live site at 375/768/1024/1440; the only difference is the Meet section at ≥1024px, which the reference pins with JS (P6a). Commits `f0d6314`, `1c8fbe7`, `08e6f23`; handover updated.
 
+> Push to main
+
+*(11:55 IST)* Pushed `main`; Vercel deploys it.
+
 ### P4: puppies pages · sent: ☐ ____
 
 ```text
