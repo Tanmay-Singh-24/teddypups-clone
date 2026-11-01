@@ -1,30 +1,30 @@
-// Temporary P0 page: checks the display type against docs/reference/screens/02-home-hero-1440.jpg.
-// Replaced by the real homepage scenes in P3.
-import Link from "next/link";
+import { Hero } from "@/components/home/Hero";
+import { MeetHall } from "@/components/home/MeetHall";
+import { Paths } from "@/components/home/Paths";
+import { ABOUT, ADDRESS, EMAIL, PHONE, SITE_NAME, SITE_URL, SOCIALS } from "@/content/site";
 
+const petStore = {
+  "@context": "https://schema.org",
+  "@type": "PetStore",
+  name: SITE_NAME,
+  description: ABOUT,
+  url: SITE_URL,
+  logo: `${SITE_URL}/brand/logo.png`,
+  image: `${SITE_URL}/brand/logo.png`,
+  telephone: PHONE,
+  email: EMAIL,
+  address: { "@type": "PostalAddress", streetAddress: ADDRESS, addressLocality: "Dubai", addressCountry: "AE" },
+  sameAs: SOCIALS.map((s) => s.href),
+};
+
+/** The homepage: one scroll story from sunrise to night in eight scenes (docs/PLAN.md §5). */
 export default function Home() {
   return (
-    <div className="gutter pb-24 text-center">
-      <p className="font-scrawl text-toffee text-[1.35rem]">every puppy is family</p>
-      <h1
-        id="hero-title"
-        className="font-plush mx-auto mt-[clamp(.5rem,1.6vh,1.1rem)] max-w-[15ch] text-[clamp(2.6rem,min(9.2vw,11vh),8.4rem)]"
-      >
-        <span className="block">Premium teacup</span>
-        <span className="block">puppies in Dubai</span>
-      </h1>
-      <p className="text-cocoa-soft mx-auto mt-4 max-w-xl">
-        Meet your new best friend in our Dubai showroom, or order a rare miniature breed from trusted breeders
-        worldwide.
-      </p>
-      <div className="mt-8 flex flex-wrap justify-center gap-3">
-        <Link href="/puppies" className="btn btn-primary">
-          View available puppies
-        </Link>
-        <a href="#" className="btn btn-ghost">
-          Enquire on WhatsApp
-        </a>
-      </div>
+    <div data-page="home" className="tp-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(petStore) }} />
+      <Hero />
+      <MeetHall />
+      <Paths />
     </div>
   );
 }

@@ -1,0 +1,295 @@
+/* Scene 1 · hero: sunrise glow, title, the lineup of arched windows and the quilt (docs/PLAN.md §5). */
+
+.tp-hero {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - var(--header-h));
+  overflow-x: clip;
+}
+
+.tp-hero__sun {
+  position: absolute;
+  top: 4%;
+  left: 50%;
+  width: min(86vw, 58rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  translate: -50%;
+  background: radial-gradient(circle, #f2be6b6b 0, #fbe3b44d 38%, #0000 66%);
+  background: radial-gradient(
+    circle,
+    color-mix(in oklab, var(--color-honey) 42%, transparent) 0,
+    color-mix(in oklab, var(--color-honey-soft) 30%, transparent) 38%,
+    transparent 66%
+  );
+  pointer-events: none;
+  animation: tp-sunrise 2.6s var(--ease-silk) both;
+}
+@keyframes tp-sunrise {
+  from {
+    opacity: 0;
+    translate: -50% 16%;
+  }
+}
+
+.tp-hero__copy {
+  position: relative;
+  padding-top: clamp(1rem, 4.5vh, 3.75rem);
+  text-align: center;
+}
+.tp-hero__note {
+  position: relative;
+  display: inline-block;
+  color: var(--color-toffee-ink);
+  font-size: clamp(1.1rem, 1.7vw, 1.5rem);
+}
+.tp-hero__title {
+  max-width: 15ch;
+  margin: clamp(0.5rem, 1.6vh, 1.1rem) auto 0;
+  font-size: clamp(2.6rem, min(9.2vw, 11vh), 8.4rem);
+}
+.tp-hero__line {
+  display: block;
+}
+.tp-hero__lede {
+  max-width: 46ch;
+  margin: clamp(0.9rem, 2.2vh, 1.4rem) auto 0;
+  color: var(--ink-soft);
+  font-size: clamp(1.05rem, 1.25vw, 1.28rem);
+  line-height: 1.5;
+}
+.tp-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: clamp(1.1rem, 3vh, 2rem);
+}
+
+/* The stage grows to fill the rest of the first screen; everything in it sits on the quilt. */
+.tp-hero__stage {
+  --quilt-h: clamp(4.5rem, 12vh, 8rem);
+  /* Teddy's width */
+  --tw: clamp(15rem, min(30vw, 46vh), 27rem);
+  /* Extra arch height hidden behind the quilt, so a pop-up never shows a gap */
+  --rise: clamp(0.75rem, 2.4vh, 1.75rem);
+  position: relative;
+  flex: 1;
+  min-height: clamp(14rem, 38vh, 25rem);
+  margin-top: clamp(0.5rem, 2vh, 1.5rem);
+}
+/* Centred on the rig's head, with the paws resting on the quilt's edge */
+.tp-hero__teddy {
+  position: absolute;
+  left: calc(50% - var(--tw) * 0.7067);
+  bottom: calc(var(--quilt-h) + 30px - var(--tw) * 0.2733);
+  width: var(--tw);
+}
+
+/* ── Quilt band ── */
+.tp-quilt {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 25;
+  height: var(--quilt-h);
+  background:
+    repeating-linear-gradient(45deg, transparent 0 46px, #2a170e12 46px 48px),
+    repeating-linear-gradient(-45deg, transparent 0 46px, #2a170e12 46px 48px),
+    var(--quilt);
+}
+.tp-quilt__edge {
+  position: absolute;
+  top: -39px;
+  left: 0;
+  display: block;
+}
+
+/* ── Lineup ── */
+.tp-lineup {
+  position: absolute;
+  inset: 0;
+}
+.tp-lineup__seat {
+  --h0: calc(var(--w) * var(--seat-k, 1) * 1.25);
+  --h: calc(var(--h0) + var(--rise, 0px));
+  position: absolute;
+  left: var(--x);
+  bottom: calc(var(--quilt-h) - (1 - var(--peek)) * var(--h0));
+  width: calc(var(--w) * var(--seat-k, 1));
+  translate: -50%;
+  rotate: var(--tilt);
+}
+.tp-lineup--tags {
+  z-index: 31;
+  pointer-events: none;
+}
+.tp-lineup__ghost {
+  position: relative;
+  display: block;
+  height: var(--h);
+  transition: translate 0.6s var(--ease-pounce);
+  transition-delay: calc(var(--i) * 50ms);
+}
+.tp-lineup__pup {
+  position: relative;
+  display: block;
+  border-radius: 999px 999px 0 0;
+  transition: translate 0.6s var(--ease-pounce);
+  transition-delay: calc(var(--i) * 50ms);
+  animation: tp-peek 0.75s var(--ease-pounce) backwards;
+  animation-delay: calc(0.62s + var(--i) * 90ms);
+}
+.tp-lineup__photo {
+  position: relative;
+  display: block;
+  height: var(--h);
+  overflow: hidden;
+  border: 3px solid var(--color-cocoa);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  background: var(--color-honey-soft);
+  box-shadow: inset 0 0 0 4px var(--color-milk);
+  transition: translate 0.45s var(--ease-pounce);
+}
+@keyframes tp-peek {
+  from {
+    translate: 0 100%;
+  }
+}
+.tp-lineup__pup:is(:hover, :focus-visible) .tp-lineup__photo {
+  translate: 0 -12%;
+}
+
+.tp-lineup__name {
+  position: absolute;
+  bottom: calc(100% + 0.4rem);
+  left: 50%;
+  padding: 0.1rem 0.7rem;
+  border: 2px solid var(--color-cocoa);
+  border-radius: 999px;
+  background: var(--color-milk);
+  font-size: 0.95rem;
+  white-space: nowrap;
+  opacity: 0;
+  translate: var(--tag-x, -50%) 0.4rem;
+  transition:
+    opacity 0.2s,
+    translate 0.35s var(--ease-pounce);
+}
+.tp-lineup__seat:first-child {
+  --tag-x: -22%;
+}
+.tp-lineup__seat:nth-child(6) {
+  --tag-x: -78%;
+}
+.tp-lineup__ghost[data-tag="show"] .tp-lineup__name {
+  opacity: 1;
+  translate: var(--tag-x, -50%) -12%;
+}
+
+/* Swap cycle states, driven by P6a: a puppy ducks behind the quilt, the understudy pops up. */
+.tp-lineup__pup[data-state="duck"] .tp-lineup__photo {
+  opacity: 0.6;
+  translate: 0 108%;
+  scale: 0.92;
+  transition:
+    translate 0.34s var(--ease-snap),
+    scale 0.34s var(--ease-snap),
+    opacity 0.34s ease-in;
+}
+.tp-lineup__pup[data-state="pop"] .tp-lineup__photo {
+  animation: tp-pop-up 0.58s var(--ease-pounce) both;
+}
+@keyframes tp-pop-up {
+  0% {
+    opacity: 0.6;
+    translate: 0 108%;
+    scale: 0.92;
+  }
+  65% {
+    opacity: 1;
+    scale: 1.04;
+  }
+  100% {
+    opacity: 1;
+    translate: 0;
+    scale: 1;
+  }
+}
+
+/* Off-screen preload of the next puppy */
+.tp-lineup__wings {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  pointer-events: none;
+}
+.tp-lineup__wings img {
+  width: 176px !important;
+  height: 220px !important;
+}
+
+/* Scrolled away: the lineup sinks behind the quilt */
+.tp-hero[data-here="false"] :is(.tp-lineup__pup, .tp-lineup__ghost) {
+  translate: 0 58%;
+}
+
+@media (max-width: 639px) {
+  .tp-hero__stage {
+    --tw: clamp(13rem, 60vw, 17rem);
+    min-height: clamp(14rem, 36vh, 19rem);
+  }
+  /* Phones: six equal arches in a gentle crescent around Teddy */
+  .tp-lineup__seat {
+    --w: 17vw !important;
+  }
+  .tp-lineup__seat:nth-child(1) {
+    --tag-x: -12%;
+    --x: 8% !important;
+    --peek: 1.18 !important;
+    z-index: 1;
+  }
+  .tp-lineup__seat:nth-child(2) {
+    --tag-x: -30%;
+    --x: 21% !important;
+    --peek: 1.3 !important;
+    z-index: 2;
+  }
+  .tp-lineup__seat:nth-child(3) {
+    --tag-x: -50%;
+    --x: 33.5% !important;
+    --peek: 1.12 !important;
+    z-index: 3;
+  }
+  .tp-lineup__seat:nth-child(4) {
+    --tag-x: -50%;
+    --x: 66.5% !important;
+    --peek: 1.12 !important;
+    z-index: 3;
+  }
+  .tp-lineup__seat:nth-child(5) {
+    --tag-x: -70%;
+    --x: 79% !important;
+    --peek: 1.3 !important;
+    z-index: 2;
+  }
+  .tp-lineup__seat:nth-child(6) {
+    --tag-x: -88%;
+    --x: 92% !important;
+    --peek: 1.18 !important;
+    z-index: 1;
+  }
+  .tp-lineup__name {
+    max-width: 46vw;
+    overflow: hidden;
+    font-size: 0.82rem;
+    text-overflow: ellipsis;
+  }
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  .tp-lineup__seat {
+    --seat-k: 0.8;
+  }
+}

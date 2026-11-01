@@ -6,6 +6,9 @@
 @import "../styles/components/footer.css";
 @import "../styles/components/pup.css";
 @import "../styles/components/poster.css";
+@import "../styles/components/hero.css";
+@import "../styles/components/meet.css";
+@import "../styles/components/paths.css";
 
 /* ── Design tokens (docs/PLAN.md §2.3) ─────────────────────────────── */
 @theme {
