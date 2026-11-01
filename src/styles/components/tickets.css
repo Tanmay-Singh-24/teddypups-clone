@@ -1,0 +1,192 @@
+/* /gone-home: Teddy's ticket booth and one ticket home per puppy (photo, route, tear-off stub).
+   [data-armed]:not([data-revealed]) is the print-in start frame (P6a arms it). */
+
+.tp-boothhead {
+  display: grid;
+  align-items: end;
+  gap: 2.5rem;
+}
+@media (min-width: 768px) {
+  .tp-boothhead {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+.tp-booth {
+  --bw: clamp(11rem, 30vw, 15rem);
+  position: relative;
+  justify-self: end;
+  width: var(--bw);
+}
+.tp-booth__teddy {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+.tp-booth__counter {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  height: calc(var(--bw) * 0.42);
+  margin-top: calc(var(--bw) * -0.272);
+  padding-top: 2rem;
+  border: 3px solid var(--color-cocoa);
+  border-radius: 0.9rem 0.9rem 0.4rem 0.4rem;
+  background:
+    linear-gradient(var(--color-cocoa), var(--color-cocoa)) 0 2.05rem / 100% 3px no-repeat,
+    repeating-linear-gradient(90deg, var(--color-toffee) 0 1.3rem, var(--color-milk) 1.3rem 2.6rem) 0 0 / 100% 2.05rem
+      no-repeat,
+    linear-gradient(#fff1d8, #fbe3b4);
+  box-shadow: 6px 8px #2a170e24;
+}
+.tp-booth__counter span {
+  color: var(--color-toffee-ink);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+}
+
+.tp-tickets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr));
+  gap: 2.25rem 1.75rem;
+  margin-top: clamp(3rem, 7vw, 5rem);
+}
+.tp-ticket {
+  rotate: var(--tilt);
+  transition: rotate 0.45s var(--ease-pounce);
+}
+.tp-ticket:hover {
+  rotate: 0deg;
+}
+.tp-ticket__link {
+  position: relative;
+  display: flex;
+  min-height: 9.5rem;
+  border-radius: 1rem;
+  filter: drop-shadow(5px 7px #2a170e29);
+  transition:
+    translate 0.45s var(--ease-pounce),
+    filter 0.45s var(--ease-silk);
+}
+.tp-ticket__link:hover {
+  filter: drop-shadow(8px 12px #2a170e2e);
+  translate: 0 -4px;
+}
+.tp-ticket__main,
+.tp-ticket__stub {
+  position: relative;
+  border: 3px solid var(--color-cocoa);
+  background: #fff8ea;
+}
+/* Half-circle notches where the stub tears off. */
+.tp-ticket__main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+  padding: 0.95rem 1rem 0.95rem 0.95rem;
+  border-right: 0;
+  border-radius: 1rem 0 0 1rem;
+  mask:
+    radial-gradient(circle at 100% 0, #0000 0.62rem, #000 0.66rem) 100% 0 / 51% 51% no-repeat,
+    radial-gradient(circle at 100% 100%, #0000 0.62rem, #000 0.66rem) 100% 100% / 51% 51% no-repeat,
+    linear-gradient(#000, #000) 0 / 50% 100% no-repeat;
+}
+.tp-ticket__photo {
+  position: relative;
+  flex: none;
+  width: clamp(5.4rem, 22vw, 6.6rem);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 3px solid var(--color-cocoa);
+  border-radius: 50%;
+  background: var(--color-honey-soft);
+}
+.tp-ticket__body {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+.tp-ticket__kicker {
+  color: var(--color-toffee-ink);
+  font-size: 0.9rem;
+}
+.tp-ticket__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: clamp(1.4rem, 2vw, 1.75rem);
+  line-height: 1.05;
+}
+.tp-ticket__meta {
+  color: var(--color-cocoa-soft);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.tp-ticket__route {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.4rem;
+  color: var(--color-cocoa);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.tp-ticket__route svg {
+  width: 2.6rem;
+  fill: none;
+  stroke: var(--color-toffee-deep);
+  stroke-width: 2.4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 3 4;
+}
+.tp-ticket__route svg path + path {
+  stroke-dasharray: none;
+}
+.tp-ticket__stub {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 3.4rem;
+  border-left: 3px dashed #2a170e8c;
+  border-radius: 0 1rem 1rem 0;
+  background: var(--color-honey);
+  transform-origin: 0 0;
+  transition: rotate 0.5s var(--ease-pounce);
+  mask:
+    radial-gradient(circle at 0 0, #0000 0.62rem, #000 0.66rem) 0 0 / 51% 51% no-repeat,
+    radial-gradient(circle at 0 100%, #0000 0.62rem, #000 0.66rem) 0 100% / 51% 51% no-repeat,
+    linear-gradient(#000, #000) 100% / 50% 100% no-repeat;
+}
+.tp-ticket__stub span {
+  color: var(--color-cocoa);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  writing-mode: vertical-rl;
+  rotate: 180deg;
+}
+.tp-ticket__link:hover .tp-ticket__stub {
+  rotate: 7deg;
+}
+.tp-ticket[data-armed]:not([data-revealed]) .tp-ticket__link {
+  clip-path: inset(0 0 100%);
+  translate: 0 -0.9rem;
+}
+.tp-ticket[data-armed] .tp-ticket__link {
+  transition:
+    clip-path 0.7s var(--ease-silk) calc(var(--i) * 80ms),
+    translate 0.7s var(--ease-silk) calc(var(--i) * 80ms),
+    filter 0.45s var(--ease-silk);
+}
+.tp-ticket[data-revealed] .tp-ticket__link {
+  clip-path: inset(-2rem);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tp-ticket,
+  .tp-ticket__link,
+  .tp-ticket__stub {
+    transition: none !important;
+  }
+}
