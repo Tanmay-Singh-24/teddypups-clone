@@ -201,6 +201,11 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§11 and §9 P7). Add Playwri
 
 **Output** *(21:20 IST)*: Playwright e2e suite in `e2e/` (16 tests covering every §11 item plus reduced motion and keyboard focus) with `npm run test:e2e`; GitHub Actions CI (install, lint, typecheck, build, Playwright Chromium, report on failure); `scripts/shots.mjs` capturing both sites at 375 and 1440 with a difference score. The fidelity pass found and fixed the dark scenes' text colour (now ≤ 0.4% difference on every main page). Lighthouse: accessibility and best practices 100, desktop performance 97–99, mobile 77–82 (reference 72/68), SEO limited only by the deliberate noindex. Video posters optimized. Commits `b1591bc`, `c1145c2`, `a41c772`, `bb70ef3`, `02e6f63`; handover updated; pushed as the prompt asks.
 
+> so is the thing ready?
+> ive checked on safari it works fine
+
+*(21:25 IST)* Answered: the site is complete and live (P0–P7); P8 remains (README, Loom checklist, submission email). Logged the Safari check in the handover.
+
 ### P8: ship · sent: ☐ ____
 
 ```text

@@ -100,6 +100,7 @@ Everything renders in its **final state** on the server, which is also what phon
 - Measuring tip: a hidden Browser pane also pauses CSS transitions, so FAQ answers look folded in screenshots even with `data-unfolded`; lazy images that never load keep their attribute aspect ratio, which drifts sub-pixel heights against a reference tab whose images did load.
 
 ## Notes from P6a and P6b
+- **Safari:** checked by the user on Safari after P7 ("it works fine").
 - **Curtain contract:** `curtainDown()` and `introTime()` (`components/motion/curtain.ts`) read `.tp-curtain`; RevealScope holds reveals while it is down and plays them on `tp:arrived`. The menu closes on `tp:navigate`. Add `data-no-curtain` to any link that must navigate without it.
 - **Pup cues:** `cuePup({ look, secs, say })` dispatches `pup:cue`; the director only reacts when the element is in the scene he is sitting in (hallway doors 0.9s; chat steps 1.4s with "ooh, photos!" / "home soon!").
 - **House door:** with the actor running it stays shut until `.tp-home[data-visited="true"]`, as on the live site.
