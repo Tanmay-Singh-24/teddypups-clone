@@ -149,6 +149,10 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§6.4–6.7, §7 and §9 P5).
 
 **Output** *(12:45 IST)*: `/happy-families` (wall of 64 taped prints opening the shared photo viewer, which the homepage dusk wall's 8 prints now open too), `/how-it-works` (anchor chips, In Dubai / Imported tab switch with both journeys, promise stamps, delivery with the flight, why, board), `/faq` (cork-board accordion, search with `<mark>` highlights, auto-expand, counts, empty state, FAQPage JSON-LD) and `/contact` (fill-in-the-blanks letter, contact column, shopfront). Both forms post to one Server Action (`src/app/actions/enquiry.ts`: zod, honeypot, inline errors, pending labels, success states, post-box animation, Resend only when `RESEND_API_KEY` and `CONTACT_TO_EMAIL` are set, otherwise logged). Every measured box and the document height equal the live site at 375 and 1440 on all four pages; FAQ search results and heights match the live site for the same queries; both forms tested on localhost only. Commits `53fad95`, `38a1ad7`, `17fa162`, `4beaffe`, `3a995e9`; handover updated. Not pushed.
 
+> Push to main
+
+*(12:49 IST)* Pushed `main`; Vercel deploys it.
+
 ### P6a: scroll motion · sent: ☐ ____
 
 ```text
