@@ -6,6 +6,7 @@ import { Photo } from "@/components/ui/Photo";
 import { showroomClip, showroomPhotos } from "@/content/home";
 import { SITE_NAME } from "@/content/site";
 import { DEFAULT_WA_TEXT, defaultWaLink } from "@/lib/whatsapp";
+import { ChatPlayer } from "./ChatPlayer";
 import { Clip } from "./Clip";
 import { Scene } from "./Scene";
 
@@ -51,9 +52,9 @@ function Route() {
  * Scene 4 · the puppy journey, told as a WhatsApp chat on a sticky phone.
  *
  * The server renders the finished conversation (every step done, the last one active, every message
- * shown), which is also what phones and reduced motion see. On desktop P6a resets it and replays it
- * step by step as the steps scroll past: data-active / data-done on steps, data-show on groups and the
- * typing dots.
+ * shown), which is also what phones and reduced motion see. On desktop ChatPlayer resets it and
+ * replays it step by step as the steps scroll past: data-active / data-done on steps, data-show on
+ * groups and the typing dots.
  */
 export function JourneyChat() {
   return (
@@ -146,6 +147,7 @@ export function JourneyChat() {
           </div>
           <PupStop pose="sit" facing="right" className="tp-chat__teddy" />
         </div>
+        <ChatPlayer />
       </div>
     </Scene>
   );
