@@ -254,3 +254,7 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§12 and §13). Confirm the p
 > and with the script tell me which part of the script points to which part of the website or the resource
 
 **Output:** a ~6-minute Loom script with an on-screen cue for every line, given in the chat (Mon 2 Nov 2026, 00:43 IST).
+
+> no like give me everything that i need to say
+
+**Output:** the full word-for-word Loom script, every line paired with its screen, given in the chat.
