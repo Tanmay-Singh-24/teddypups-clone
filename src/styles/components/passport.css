@@ -198,13 +198,32 @@
   border-radius: 50%;
   background: radial-gradient(closest-side, #ffd27f 0 70%, #ffd27f73 73%, #0000 100%);
 }
-/* Scroll-driven in P6a: the sun sinks behind the skyline */
+/* The sun sinks behind the skyline as the passport scrolls away */
 @keyframes tp-sun-set {
   from {
     translate: 0 -60%;
   }
   to {
     translate: 0 40%;
+  }
+}
+/* Scroll-driven where supported; elsewhere both rest on their final frame. */
+@supports (animation-timeline: view()) {
+  .tp-stamp {
+    animation: tp-stamp-in linear both;
+    animation-timeline: view();
+    animation-range: entry calc(55% + var(--i) * 9%) cover calc(42% + var(--i) * 6%);
+  }
+  .tp-horizon__sun {
+    animation: tp-sun-set linear both;
+    animation-timeline: view();
+    animation-range: entry exit 30%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tp-stamp,
+  .tp-horizon__sun {
+    animation: none !important;
   }
 }
 .tp-horizon__city {

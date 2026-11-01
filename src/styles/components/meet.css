@@ -243,6 +243,17 @@
     transform: rotateY(var(--door-open));
   }
 }
+/* In the door grid, each door swings open as it scrolls into view (the pinned hallway drives its own). */
+@supports (animation-timeline: view()) {
+  .tp-door__leaf {
+    animation: tp-door-open linear both;
+    animation-timeline: view();
+    animation-range: entry 55% cover 48%;
+  }
+  .tp-meet[data-pinned] .tp-door__leaf {
+    animation: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .tp-door__leaf {
     transform: rotateY(var(--door-open)) !important;

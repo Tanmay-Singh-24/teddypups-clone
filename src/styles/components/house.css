@@ -100,6 +100,18 @@
     transform: rotateY(-102deg);
   }
 }
+@supports (animation-timeline: view()) {
+  .tp-house__door {
+    animation: tp-house-open linear both;
+    animation-timeline: view();
+    animation-range: entry 80% cover 52%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tp-house__door {
+    animation: none !important;
+  }
+}
 /* With the pup actor running, the door waits shut until Teddy arrives home */
 html[data-pup] .tp-house__door {
   transform: rotateY(0);
