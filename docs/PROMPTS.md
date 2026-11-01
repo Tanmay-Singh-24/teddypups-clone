@@ -242,3 +242,10 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§12 and §13). Confirm the p
 > Push to main
 
 *(22:27 IST)* Pushed `main`; Vercel deploys it.
+
+### Loom prep · Sun 1 Nov 2026, 22:32 IST (same session)
+
+> *[Pasted the Loom section of the assignment email: the five things the video must explain. They are listed in PLAN.md §1, item 3.]*
+
+**Output:** talking points for each of the five, what to have open, and the numbers to quote, given in the chat.
+
