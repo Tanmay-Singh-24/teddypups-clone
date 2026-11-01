@@ -249,3 +249,8 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§12 and §13). Confirm the p
 
 **Output:** talking points for each of the five, what to have open, and the numbers to quote, given in the chat.
 
+
+> give me a script maybe shorten the video length a bit cause its too much
+> and with the script tell me which part of the script points to which part of the website or the resource
+
+**Output:** a ~6-minute Loom script with an on-screen cue for every line, given in the chat (Mon 2 Nov 2026, 00:43 IST).
