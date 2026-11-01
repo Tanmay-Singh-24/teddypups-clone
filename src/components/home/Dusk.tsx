@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PupStop } from "@/components/motion/PupStop";
+import { PhotoWallViewer } from "@/components/ui/PhotoWallViewer";
 import { familyPhotos, homeFamilyPhotos } from "@/content/families";
 import { TESTIMONIAL } from "@/content/site";
 import { Scene } from "./Scene";
@@ -35,11 +36,12 @@ function TapeStrips({ at }: { at: Tape }) {
 }
 
 const total = familyPhotos.length;
+const SIZES = "(min-width: 1024px) 18vw, (min-width: 640px) 28vw, 42vw";
 const wall = homeFamilyPhotos.slice(0, PRINTS.length);
 
 /**
  * Scene 6 · dusk: the testimonial and a board of taped family polaroids above a little shopfront.
- * Each print opens the shared photo viewer over all 64 photos (wired up with the viewer in P5).
+ * Each print opens the shared photo viewer over all 64 photos.
  */
 export function Dusk() {
   return (
@@ -93,7 +95,7 @@ export function Dusk() {
                           alt={photo.alt}
                           width={photo.width}
                           height={photo.height}
-                          sizes="(min-width: 1024px) 18vw, (min-width: 640px) 28vw, 42vw"
+                          sizes={SIZES}
                           placeholder={photo.blurDataUrl ? "blur" : "empty"}
                           blurDataURL={photo.blurDataUrl ?? undefined}
                           style={{ width: "100%", height: "auto", backgroundColor: photo.color }}
@@ -106,6 +108,7 @@ export function Dusk() {
               );
             })}
           </ul>
+          <PhotoWallViewer photos={homeFamilyPhotos} pageSizes={SIZES} />
           <div className="tp-facade__ground">
             <span aria-hidden="true" className="tp-facade__door" />
             <span aria-hidden="true" className="tp-lamp">

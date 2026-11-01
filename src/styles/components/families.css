@@ -1,0 +1,178 @@
+/* /happy-families: the memory wall. Prints sit in CSS columns; each opens the shared photo viewer.
+   [data-armed]:not([data-revealed]) is the bounce-in start frame (P6a arms it). */
+
+.tp-memories {
+  background:
+    repeating-linear-gradient(90deg, #0000 0 46px, #c2622b0b 46px 48px),
+    radial-gradient(70% 40% at 50% 0, #ffd68c73, #0000 70%),
+    linear-gradient(#fff3df, #fbe9cc 60%, #f7e0bd);
+}
+.tp-memories__head {
+  display: grid;
+  align-items: end;
+  gap: 2.5rem 4rem;
+}
+@media (min-width: 1024px) {
+  .tp-memories__head {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 28rem);
+  }
+}
+.tp-memories__title {
+  line-height: 1.06;
+}
+.tp-memories__heart {
+  display: inline-block;
+  width: 0.42em;
+  margin-left: 0.25em;
+  color: var(--color-toffee);
+  translate: 0 -0.12em;
+}
+.tp-memories__note {
+  position: relative;
+  padding: 1.6rem 1.5rem 1.2rem;
+  border-radius: 0.3rem;
+  background:
+    linear-gradient(#0000 1.55rem, #2f6e9e21 1.55rem 1.6rem) 0 0.4rem / 100% 1.6rem,
+    #fffdf6;
+  box-shadow: 0 8px 18px -8px #2a170e59;
+  rotate: 1.4deg;
+}
+.tp-memories__note blockquote {
+  font-size: clamp(1.02rem, 1.2vw, 1.15rem);
+  line-height: 1.6rem;
+}
+.tp-memories__note figcaption {
+  margin-top: 0.8rem;
+  color: var(--color-toffee-ink);
+}
+
+.tp-wall {
+  columns: 2 10.5rem;
+  column-gap: clamp(1rem, 3vw, 2.6rem);
+}
+@media (min-width: 768px) {
+  .tp-wall {
+    columns: 3;
+  }
+}
+@media (min-width: 1280px) {
+  .tp-wall {
+    columns: 4;
+  }
+}
+.tp-wall__item {
+  break-inside: avoid;
+  padding: 1.1rem 0.35rem clamp(1.4rem, 3vw, 2.4rem);
+}
+.tp-wall__print {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0.3rem;
+  background: none;
+  text-align: inherit;
+}
+.tp-wall__print:is(:hover, :focus-visible) .tp-polaroid {
+  translate: 0 -6px;
+  rotate: 0deg;
+  box-shadow:
+    0 1px 1px #2a170e1f,
+    0 18px 30px -14px #2a170e6b;
+}
+.tp-wall__print:active .tp-polaroid {
+  translate: 0 -2px;
+}
+.tp-wall__paw {
+  position: absolute;
+  top: -1.25rem;
+  left: 50%;
+  z-index: 3;
+  width: clamp(1.8rem, 24%, 2.6rem);
+  color: var(--color-toffee);
+  opacity: 0;
+  pointer-events: none;
+  translate: -50%;
+}
+.tp-wall__item .tp-tape {
+  transition:
+    scale 0.35s var(--ease-pounce) calc(var(--d) + 0.42s),
+    opacity 0.2s calc(var(--d) + 0.42s);
+}
+.tp-wall__item[data-armed]:not([data-revealed]) .tp-polaroid {
+  opacity: 0;
+}
+.tp-wall__item[data-armed]:not([data-revealed]) .tp-tape {
+  opacity: 0;
+  scale: 1.25 0.6;
+}
+.tp-wall__item[data-armed][data-revealed] .tp-polaroid {
+  animation: tp-print-bound 0.62s var(--d) backwards;
+}
+.tp-wall__item[data-armed][data-revealed] .tp-wall__paw {
+  animation: tp-paw-pat 0.7s calc(var(--d) + 0.2s) both;
+}
+@keyframes tp-print-bound {
+  0% {
+    opacity: 0;
+    translate: 0 1.6rem;
+    scale: 0.9;
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  42% {
+    opacity: 1;
+    translate: 0 -0.4rem;
+    scale: 0.98 1.03;
+    animation-timing-function: cubic-bezier(0.5, 0, 0.7, 0.4);
+  }
+  68% {
+    translate: 0;
+    scale: 1.03 0.97;
+    animation-timing-function: cubic-bezier(0.3, 0, 0.3, 1);
+  }
+  to {
+    opacity: 1;
+    translate: 0;
+    scale: 1;
+  }
+}
+@keyframes tp-paw-pat {
+  0% {
+    opacity: 0;
+    transform: translateY(-1.2rem) rotate(-16deg) scale(1.15);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.7, 0.6);
+  }
+  32% {
+    opacity: 0.92;
+    transform: translateY(0.12rem) rotate(-6deg) scale(1.06, 0.88);
+    animation-timing-function: cubic-bezier(0.3, 0, 0.3, 1);
+  }
+  52% {
+    opacity: 0.92;
+    transform: translateY(0) rotate(-6deg) scale(1);
+    animation-timing-function: cubic-bezier(0.4, 0, 0.8, 0.6);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1rem) rotate(6deg) scale(1.04);
+  }
+}
+
+.tp-memories__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  margin-top: clamp(2rem, 6vh, 4rem);
+}
+.tp-memories [data-reveal]:not(.tp-wall__item) {
+  transition:
+    opacity 0.6s ease,
+    translate 0.7s var(--ease-silk);
+}
+.tp-memories [data-reveal][data-armed]:not([data-revealed]):not(.tp-wall__item) {
+  opacity: 0;
+  translate: 0 1rem;
+}
