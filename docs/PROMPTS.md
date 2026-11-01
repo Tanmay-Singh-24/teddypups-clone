@@ -139,13 +139,15 @@ Compare with the reference at 375 and 1440, then commit.
 
 *(12:20 IST)* Pushed `main`; Vercel deploys it.
 
-### P5: other pages and forms · sent: ☐ ____
+### P5: other pages and forms · sent: ☑ Sun 1 Nov 2026, 12:23 IST (Claude Code, Opus, fresh session)
 
 ```text
 Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§6.4–6.7, §7 and §9 P5). Build /happy-families (wall of 64 + the shared photo viewer), /how-it-works (anchor chips, the In Dubai / Imported switch with both journeys, promise stamps, delivery, why, board), /faq (cork-board accordion, search with <mark> highlighting and auto-expand, counts, empty state, FAQPage JSON-LD) and /contact (the fill-in-the-blanks letter form with the puppy select, contact column, shopfront with the Google Maps link). Then wire both forms (contact letter + puppy enquiry) to one Server Action as §7 describes: zod validation, honeypot, inline field errors, pending state, the reference's success states and the post-box animation, email through Resend only when RESEND_API_KEY is set (otherwise log). Never submit forms on the live reference site. Commit.
 ```
 
 **Follow-ups:**
+
+**Output** *(12:45 IST)*: `/happy-families` (wall of 64 taped prints opening the shared photo viewer, which the homepage dusk wall's 8 prints now open too), `/how-it-works` (anchor chips, In Dubai / Imported tab switch with both journeys, promise stamps, delivery with the flight, why, board), `/faq` (cork-board accordion, search with `<mark>` highlights, auto-expand, counts, empty state, FAQPage JSON-LD) and `/contact` (fill-in-the-blanks letter, contact column, shopfront). Both forms post to one Server Action (`src/app/actions/enquiry.ts`: zod, honeypot, inline errors, pending labels, success states, post-box animation, Resend only when `RESEND_API_KEY` and `CONTACT_TO_EMAIL` are set, otherwise logged). Every measured box and the document height equal the live site at 375 and 1440 on all four pages; FAQ search results and heights match the live site for the same queries; both forms tested on localhost only. Commits `53fad95`, `38a1ad7`, `17fa162`, `4beaffe`, `3a995e9`; handover updated. Not pushed.
 
 ### P6a: scroll motion · sent: ☐ ____
 
