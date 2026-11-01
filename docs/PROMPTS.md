@@ -189,13 +189,17 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§8.2, §8.3, §9 P6b and §1
 
 *(21:04 IST)* Pushed `main`; Vercel deploys it.
 
-### P7: QA and tests · sent: ☐ ____
+### P7: QA and tests · sent: ☑ Sun 1 Nov 2026, 21:06 IST (Claude Code, Opus, same session as P5–P6b; sent as "p7 now")
 
 ```text
 Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§11 and §9 P7). Add Playwright e2e tests in e2e/ for everything listed in §11, an npm script test:e2e, and a GitHub Actions workflow (install, lint, typecheck, build, Playwright chromium; upload the report on failure). Add scripts/shots.mjs to capture every page at 375 and 1440 for both the reference and our build into docs/shots/. Then do a fidelity pass page by page using those shots and fix every visible difference, run Lighthouse (desktop + mobile) and fix accessibility/performance issues, and check reduced motion and keyboard-only navigation. Commit and push; make sure CI is green.
 ```
 
 **Follow-ups:**
+
+> p7 now
+
+**Output** *(21:20 IST)*: Playwright e2e suite in `e2e/` (16 tests covering every §11 item plus reduced motion and keyboard focus) with `npm run test:e2e`; GitHub Actions CI (install, lint, typecheck, build, Playwright Chromium, report on failure); `scripts/shots.mjs` capturing both sites at 375 and 1440 with a difference score. The fidelity pass found and fixed the dark scenes' text colour (now ≤ 0.4% difference on every main page). Lighthouse: accessibility and best practices 100, desktop performance 97–99, mobile 77–82 (reference 72/68), SEO limited only by the deliberate noindex. Video posters optimized. Commits `b1591bc`, `c1145c2`, `a41c772`, `bb70ef3`, `02e6f63`; handover updated; pushed as the prompt asks.
 
 ### P8: ship · sent: ☐ ____
 
