@@ -15,6 +15,10 @@ type PhotoProps = {
   style?: CSSProperties;
 };
 
+/** A resized copy from the image optimizer, for places next/image can't go (video posters, SVG <image>). */
+export const optimizedSrc = (url: string, width: number, quality = 75) =>
+  `/_next/image?url=${encodeURIComponent(url)}&w=${width}&q=${quality}`;
+
 export const focalPosition = (m: Media) => `${(m.focalX * 100).toFixed(1)}% ${(m.focalY * 100).toFixed(1)}%`;
 
 /**

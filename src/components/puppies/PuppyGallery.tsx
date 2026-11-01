@@ -2,7 +2,7 @@
 
 import { AnimatePresence, MotionConfig, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Photo } from "@/components/ui/Photo";
+import { optimizedSrc, Photo } from "@/components/ui/Photo";
 import { swipeStep, ViewerImage, ViewerPreload } from "@/components/ui/PhotoViewer";
 import type { Media } from "@/content/types";
 
@@ -68,7 +68,7 @@ export function PuppyGallery({ name, media }: { name: string; media: Media[] }) 
               {item.kind === "video" ? (
                 <video
                   src={item.url}
-                  poster={item.poster?.url}
+                  poster={item.poster ? optimizedSrc(item.poster.url, 1080) : undefined}
                   className="size-full object-cover"
                   muted
                   loop
@@ -173,7 +173,7 @@ export function PuppyGallery({ name, media }: { name: string; media: Media[] }) 
                   {item.kind === "video" ? (
                     <video
                       src={item.url}
-                      poster={item.poster?.url}
+                      poster={item.poster ? optimizedSrc(item.poster.url, 1080) : undefined}
                       controls
                       autoPlay
                       playsInline

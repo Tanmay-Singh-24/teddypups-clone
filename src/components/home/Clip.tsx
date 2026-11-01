@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { optimizedSrc } from "@/components/ui/Photo";
 import type { Media } from "@/content/types";
 
 /** The showroom clip in the phone: a muted loop that plays on demand. */
@@ -20,7 +21,7 @@ export function Clip({ video }: { video: Media }) {
       <video
         ref={ref}
         src={video.url}
-        poster={video.poster?.url}
+        poster={video.poster ? optimizedSrc(video.poster.url, 384) : undefined}
         muted
         loop
         playsInline

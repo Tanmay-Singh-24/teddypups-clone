@@ -1,3 +1,4 @@
+import { optimizedSrc } from "@/components/ui/Photo";
 import type { Puppy } from "@/content/types";
 
 /** The Downtown Dubai skyline line art (viewBox 300×120). */
@@ -9,7 +10,7 @@ export const SKYLINE =
  * looks out of the porthole (homepage); without one it is the empty plane (/how-it-works).
  */
 export function Flight({ label, passenger }: { label: string; passenger?: Puppy }) {
-  const porthole = passenger && `/_next/image?url=${encodeURIComponent(passenger.cover.url)}&w=128&q=75`;
+  const porthole = passenger && optimizedSrc(passenger.cover.url, 128);
   return (
     <div className="tp-flight">
       <svg viewBox="0 0 660 300" role="img" aria-label={label}>
