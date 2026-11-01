@@ -185,6 +185,10 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§8.2, §8.3, §9 P6b and §1
 
 **Output** *(21:03 IST)*: the page curtain (intro on first load; on every internal navigation the quilt rises, the runner dog gallops across stamping prints with "every puppy is family", and it lifts once the new route renders; back/forward snap), the pup actor (one Teddy who walks the homepage stops as you scroll, with poses, acts, idles, bubbles, paw prints, click tricks and phone lane mode) and live buddies on every page. No cut line taken. Compared with the live site: the actor's position, scale and scene states are identical at 12 scroll points at 1440 and 10 at 375; curtain timings match the reference's state machine. Commits `4711915`, `1be95d8`, `5398687`, `624a765`; handover updated. Not pushed.
 
+> Push to main
+
+*(21:04 IST)* Pushed `main`; Vercel deploys it.
+
 ### P7: QA and tests · sent: ☐ ____
 
 ```text
