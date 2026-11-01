@@ -221,3 +221,7 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§12 and §13). Confirm the p
 > Start P8
 
 **Output** *(21:30 IST)*: README with screenshots and every section §13 asks for; Vercel production green; the live site clicked through (every route, a filter, the gallery, the FAQ search, both forms with test data); this log checked against every message sent (the one interrupted message is now recorded under P6a); a Loom checklist and the submission email drafted in the chat. Commits `cfe34c6` and the docs commit after it.
+
+> Push to main
+
+*(22:20 IST)* Pushed `main`; Vercel deploys it.
