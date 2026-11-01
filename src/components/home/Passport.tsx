@@ -1,14 +1,8 @@
 import type { CSSProperties, ReactNode } from "react";
+import { ChatDots, HeartPulse, PlaneTrail, stroke } from "@/components/art/StampIcons";
 import { PupStop } from "@/components/motion/PupStop";
 import { Scene } from "./Scene";
 
-const stroke = {
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 3,
-  strokeLinecap: "round",
-  strokeLinejoin: "round",
-} as const;
 
 type Stamp = { title: string; text: string; shape: "round" | "ticket" | "oval" | "scallop"; ink: string; tilt: string; icon: ReactNode };
 
@@ -19,12 +13,7 @@ const STAMPS: Stamp[] = [
     shape: "round",
     ink: "#a24a1a",
     tilt: "-8deg",
-    icon: (
-      <>
-        <path d="M32 54C16 43 8 34 8 24c0-7 5.4-12 12-12 5 0 9 3 12 7 3-4 7-7 12-7 6.6 0 12 5 12 12 0 10-8 19-24 30z" {...stroke} />
-        <path d="M22 30h7l3-7 4 13 3-6h7" {...stroke} />
-      </>
-    ),
+    icon: <HeartPulse />,
   },
   {
     title: "Korea to Dubai, safely",
@@ -32,12 +21,7 @@ const STAMPS: Stamp[] = [
     shape: "ticket",
     ink: "#1f6b45",
     tilt: "5deg",
-    icon: (
-      <>
-        <path d="M6 36l22-3 12-17h6l-6 17 12-1 6-7h3l-2 10 2 10h-3l-6-7-12-1 6 17h-6L28 37 6 36z" {...stroke} />
-        <path d="M8 50c10 4 20 4 30 0" {...stroke} strokeDasharray="2 7" />
-      </>
-    ),
+    icon: <PlaneTrail />,
   },
   {
     title: "Support 24/7",
@@ -45,12 +29,7 @@ const STAMPS: Stamp[] = [
     shape: "oval",
     ink: "#5a3a28",
     tilt: "-4deg",
-    icon: (
-      <>
-        <path d="M10 14h44v28H30l-12 10v-10h-8z" {...stroke} />
-        <path d="M22 28h0M32 28h0M42 28h0" {...stroke} strokeWidth={5} />
-      </>
-    ),
+    icon: <ChatDots />,
   },
   {
     title: "Trusted by families worldwide",
