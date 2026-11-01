@@ -271,3 +271,16 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§12 and §13). Confirm the p
 > here is the loom video now give me the email that i need to send them
 
 **Output:** the submission email with the live URL, the repository and the Loom link, given in the chat.
+
+> can i delete the email i sent the wrong one
+
+**Output:** explained that a delivered email can't be unsent (beyond Gmail's short Undo window) and drafted a short correction reply.
+
+> *[Pasted the sent email thread, left out of this public repo.]*
+> all good?
+
+**Output:** the 02:28 submission is correct (exact subject, all three links, inside the 48-hour deadline); the 02:30 message was a blank duplicate and needs no follow-up.
+
+> push everything to main
+
+*(02:32 IST)* Pushed `main`.
