@@ -258,3 +258,7 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§12 and §13). Confirm the p
 > no like give me everything that i need to say
 
 **Output:** the full word-for-word Loom script, every line paired with its screen, given in the chat.
+
+> the thing is that it sounds a lil too polished i want you to make it feel more human
+
+**Output:** the same script rewritten in a looser, spoken voice, given in the chat.
