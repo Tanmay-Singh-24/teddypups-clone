@@ -121,7 +121,7 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§5 and §9 P3). Build the 8 
 
 *(11:55 IST)* Pushed `main`; Vercel deploys it.
 
-### P4: puppies pages · sent: ☐ ____
+### P4: puppies pages · sent: ☑ Sun 1 Nov 2026, 11:59 IST (Claude Code, Opus, fresh session)
 
 ```text
 Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§6.1–6.3, §7 and §9 P4). First click every filter chip on the live /puppies page and note the exact URL parameter names, values, count texts and the empty state (open /puppies?origin=local). Then build:
@@ -132,6 +132,8 @@ Compare with the reference at 375 and 1440, then commit.
 ```
 
 **Follow-ups:**
+
+**Output** *(12:19 IST)*: `/puppies` (sketchbook header, URL-synced filters, count line, seeded sketch cards with Motion layout reflow, gone-home strip), all 42 `/puppies/[slug]` profiles in both variants (gallery with full-screen viewer, facts tag, checklist, way home, enquiry letter UI, prev/next, metadata, BreadcrumbList JSON-LD) and `/gone-home` with 27 tickets. Filter params and counts match the live site; unknown slugs return 404 on the first request (`ensureStatic = "navigation"`); every measured box equals the live site at 375 and 1440. Commits `891d968`, `5057b3e`, `7aaa188`, `48150df`; handover updated. Not pushed.
 
 ### P5: other pages and forms · sent: ☐ ____
 
