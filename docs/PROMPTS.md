@@ -225,3 +225,16 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§12 and §13). Confirm the p
 > Push to main
 
 *(22:20 IST)* Pushed `main`; Vercel deploys it.
+
+---
+
+## Fixes after P8
+
+### Fix 1: the plane's flight · Sun 1 Nov 2026, 22:25 IST (Claude Code, Opus, same session as P5–P8)
+
+*[Attached: a screenshot of the Korea → Dubai plane over the skyline.]*
+
+> theres an issue with the site in the main page and in the how it works page the
+> aeroplane does a motion animation while scrolling in the official website fix that
+
+**Output** *(22:26 IST)*: the plane now flies the dotted Korea → Dubai route as its drawing scrolls through the viewport (Motion `useScroll`, offset `start 95%` → `end 25%`), turning with the curve and fading in after 11% of the way, as the reference does; reduced motion parks it at 62%. Checked against the live site on the homepage and /how-it-works at 1440: position, angle and opacity identical at six scroll points. The skyline path moved to its own module so server pages can keep importing it. Not pushed.
