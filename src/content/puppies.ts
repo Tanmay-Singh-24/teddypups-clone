@@ -1,5 +1,5 @@
 import data from "./data/puppies.json";
-import type { Puppy, Slugged } from "./types";
+import type { Puppy, PuppyCard, Slugged } from "./types";
 
 /** Available puppies, in the reference's order (/puppies grid, homepage doors and lineup). */
 export const availablePuppies = data.available as Puppy[];
@@ -27,4 +27,10 @@ export function getNeighbours(p: Puppy) {
     previous: list[(i - 1 + list.length) % list.length],
     next: list[(i + 1) % list.length],
   };
+}
+
+export function toCard(p: Puppy): PuppyCard {
+  const { id, slug, name, displayName, breed, gender, genderLabel, age, status, origin, collections, breeds, cover } = p;
+  const hasVideo = p.media.some((m) => m.kind === "video");
+  return { id, slug, name, displayName, breed, gender, genderLabel, age, status, origin, collections, breeds, cover, hasVideo };
 }

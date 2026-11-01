@@ -8,8 +8,10 @@ export const waLink = (text: string) => BASE + encodeURIComponent(text);
 
 export const DEFAULT_WA_TEXT = "Hi TeddyPups! I'd love to know more about your puppies.";
 export const QUESTION_WA_TEXT = "Hi TeddyPups! I have a question:";
+export const LOOKING_WA_TEXT = "Hi TeddyPups! I'm looking for a puppy — what do you have at the moment?";
 
 export const defaultWaLink = waLink(DEFAULT_WA_TEXT);
 export const questionWaLink = waLink(QUESTION_WA_TEXT);
+export const lookingWaLink = waLink(LOOKING_WA_TEXT);
 
 export const puppyWaLink = (p: Puppy) => waLink(puppyWhatsAppText(p, `${SITE_URL}/puppies/${p.slug}`));

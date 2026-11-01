@@ -47,4 +47,22 @@ export type Puppy = {
   ticket?: { from: string; imageUrl: string; imageAlt: string };
 };
 
+/** What a sketch card and the /puppies filters need, kept small for the client payload. */
+export type PuppyCard = Pick<
+  Puppy,
+  | "id"
+  | "slug"
+  | "name"
+  | "displayName"
+  | "breed"
+  | "gender"
+  | "genderLabel"
+  | "age"
+  | "status"
+  | "origin"
+  | "collections"
+  | "breeds"
+  | "cover"
+> & { hasVideo: boolean };
+
 export type Faq = { id: string; question: string; answer: string };
