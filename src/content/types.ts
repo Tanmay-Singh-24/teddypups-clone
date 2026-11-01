@@ -34,6 +34,10 @@ export type Puppy = {
   gender: Gender;
   genderLabel: string;
   age: string;
+  /** Shown as a "Colour" fact when set. */
+  colour: string | null;
+  /** Shown under the facts when set, e.g. "Maltipoo (Left) & Cavapoo (Right)." */
+  description: string | null;
   status: PuppyStatus;
   origin: Slugged & { slug: "local" | "imported" };
   collections: Slugged[];
