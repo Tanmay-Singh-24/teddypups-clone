@@ -60,7 +60,7 @@ export function NoticeBoard({ faqs, askHref }: { faqs: Faq[]; askHref: string })
             <span className="tp-notes__q">?</span>
             <span className="tp-notes__a">!</span>
           </span>
-          <PupBuddy pose="sit" label="Teddy, reading the notes" />
+          <PupBuddy pose="sit" act="tilt" label="Teddy, reading the notes" />
         </div>
         <a href={askHref} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp tp-notes__ask">
           Ask your own question

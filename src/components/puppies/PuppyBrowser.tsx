@@ -133,7 +133,7 @@ export function PuppyBrowser({ puppies, breeds, whatsappHref }: PuppyBrowserProp
         </RevealScope>
       ) : (
         <div className="tp-sketchpad mt-10 grid items-center gap-6 md:grid-cols-[auto_1fr] md:gap-10">
-          <PupBuddy pose="sit" className="mx-auto w-44 md:w-52" label="Teddy, tilting his head" />
+          <PupBuddy pose="sit" act="tilt" className="mx-auto w-44 md:w-52" label="Teddy, tilting his head" />
           <div>
             <p className="font-plush text-big">No puppies match just now.</p>
             <p className="mt-3 max-w-[48ch] text-cocoa-soft">

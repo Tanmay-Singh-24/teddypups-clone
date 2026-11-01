@@ -211,7 +211,7 @@ export function Journeys() {
               </button>
             ))}
           </div>
-          <PupBuddy pose="sit" className="tp-journeys__teddy" label="Teddy, waiting to see which way you pick" />
+          <PupBuddy pose="sit" act="tilt" className="tp-journeys__teddy" label="Teddy, waiting to see which way you pick" />
         </div>
       </div>
       {WAYS.map((w) => (

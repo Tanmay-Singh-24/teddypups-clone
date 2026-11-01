@@ -30,7 +30,7 @@ export function PupStop({ pose, facing, act, behind, lane, label, className = ""
       data-lane={lane || undefined}
       className={`pup-stop ${className}`}
     >
-      <PupBuddy pose={pose} facing={facing} label={label} />
+      <PupBuddy pose={pose} facing={facing} label={label} asStop />
     </div>
   );
 }
