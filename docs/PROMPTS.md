@@ -173,13 +173,17 @@ Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§8.1, §8.4 and §9 P6a). Ad
 
 *(20:49 IST)* Pushed `main`; Vercel deploys it.
 
-### P6b: page curtain and pup actor · sent: ☐ ____
+### P6b: page curtain and pup actor · sent: ☑ Sun 1 Nov 2026, 20:50 IST (Claude Code, Opus, same session as P5 and P6a; sent as "start 6b")
 
 ```text
 Read docs/HANDOVER.md, CLAUDE.md and docs/PLAN.md (§8.2, §8.3, §9 P6b and §10). Build (1) the page-transition curtain — the quilt rises, the runner dog crosses with paw prints and "every puppy is family", and it lifts once the new route has rendered — used by every internal link; and (2) the pup actor: one fixed-layer mascot that travels between the homepage .pup-stop anchors as the user scrolls, with walk/sit/peek/bow/treadmill poses, facing, blink/ear/tail idles, speech bubbles and paw prints stamped along its path, plus the "lane" mode under 768 px. Read docs/reference/js/_PUP-ENGINE.js only to understand the behaviour and timings, and write our own typed implementation. Timebox the pup to about 4 hours: if it isn't convincing by then, stop, tell me, and ship the static mascots with idle animations (cut line 1). Commit.
 ```
 
 **Follow-ups:**
+
+> start 6b
+
+**Output** *(21:03 IST)*: the page curtain (intro on first load; on every internal navigation the quilt rises, the runner dog gallops across stamping prints with "every puppy is family", and it lifts once the new route renders; back/forward snap), the pup actor (one Teddy who walks the homepage stops as you scroll, with poses, acts, idles, bubbles, paw prints, click tricks and phone lane mode) and live buddies on every page. No cut line taken. Compared with the live site: the actor's position, scale and scene states are identical at 12 scroll points at 1440 and 10 at 375; curtain timings match the reference's state machine. Commits `4711915`, `1be95d8`, `5398687`, `624a765`; handover updated. Not pushed.
 
 ### P7: QA and tests · sent: ☐ ____
 
