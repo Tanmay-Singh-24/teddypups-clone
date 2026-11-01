@@ -101,6 +101,9 @@ Everything renders in its **final state** on the server, which is also what phon
 - The FAQ search highlights with the trimmed query but filters case-insensitively, exactly like the reference; auto-unfold only looks at answers.
 - Measuring tip: a hidden Browser pane also pauses CSS transitions, so FAQ answers look folded in screenshots even with `data-unfolded`; lazy images that never load keep their attribute aspect ratio, which drifts sub-pixel heights against a reference tab whose images did load.
 
+## Fixes after P8
+- **Plane flight** (homepage Paths, /how-it-works delivery): `art/Flight` is a client component; the plane follows the route on scroll (`useScroll` offset `start 95%`/`end 25%`, tangent rotation, fades in from 11% to 17%), parked at 62% under reduced motion. The skyline path lives in `art/skyline.ts` (a `"use client"` module can't export plain values to server components).
+
 ## Notes from P6a and P6b
 - **Safari:** checked by the user on Safari after P7 ("it works fine").
 - **Curtain contract:** `curtainDown()` and `introTime()` (`components/motion/curtain.ts`) read `.tp-curtain`; RevealScope holds reveals while it is down and plays them on `tp:arrived`. The menu closes on `tp:navigate`. Add `data-no-curtain` to any link that must navigate without it.
